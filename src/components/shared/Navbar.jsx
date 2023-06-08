@@ -3,11 +3,14 @@ import { Link, NavLink } from 'react-router-dom';
 import MyContainer from '../MyContainer';
 import { Turn as Hamburger } from 'hamburger-react'
 import { useState } from 'react';
+import useAuth from '../../hooks/useAuth';
+import profileImage from '../../assets/images/profile.jpg'
 
 
 
 const Navbar = () => {
     const [isOpen, setOpen] = useState(false)
+    const { user } = useAuth()
 
     const navLinks =
         <>
@@ -39,8 +42,14 @@ const Navbar = () => {
                         {navLinks}
 
                     </ul>
-                    <div className='hidden md:block'>
+
+
+                    <div className='hidden md:flex space-x-5'>
+                        {
+                            user && <img className='w-12 h-12 rounded-full' src={user.photoURL || profileImage} />
+                        }
                         <Link to='/login'>  <button className='btn btn-neutral'>Login</button></Link>
+
                     </div>
 
 
@@ -53,6 +62,7 @@ const Navbar = () => {
                     <ul className={`${isOpen ? 'h-auto opacity-100' : 'h-0 opacity-0'} left-0 top-[60px] origin-top duration-300 md:hidden  absolute  bg-black text-white w-full pl-5 space-y-3 py-5 mt-3 z-10`}>
 
                         {navLinks}
+                        { }
                         <div className=''>
                             <Link to='/login'>  <button className='btn btn-neutral'>Login</button></Link>
                         </div>

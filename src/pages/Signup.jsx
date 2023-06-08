@@ -9,6 +9,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
+import SocialLogin from "../components/SocialLogin";
 
 
 const Signup = () => {
@@ -274,6 +275,8 @@ const Signup = () => {
                         <button disabled={registerLoading} type="submit" className="btn btn-neutral">
                             {registerLoading ? <span className="animate-spin text-lg"><ImSpinner10 /></span> : 'Signup'}
                         </button>
+                        <div className="divider">Or</div>
+                        <SocialLogin />
 
                         <p className="text-center">Already Have an Account ?
                             <Link className="ml-1 link" to='/signup'>

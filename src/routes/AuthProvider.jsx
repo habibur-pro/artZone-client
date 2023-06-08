@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, onAuthStateChanged, signOut, updateProfile } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, onAuthStateChanged, signOut, updateProfile, GoogleAuthProvider } from "firebase/auth";
 import app from "../firebase/firebase.config";
+import { MoonLoader } from "react-spinners";
 
 
 const auth = getAuth(app);
@@ -28,9 +29,9 @@ const AuthProvider = ({ children }) => {
     // google login 
 
     const loginWithGoogle = () => {
-        const googleProvider = new googleProvider()
+        const provider = new GoogleAuthProvider()
         setLoading(true)
-        return signInWithPopup(auth, googleProvider)
+        return signInWithPopup(auth, provider)
     }
 
     // logout 
@@ -71,6 +72,11 @@ const AuthProvider = ({ children }) => {
         })
         return () => unsubscribe()
     },)
+
+
+    {
+        isLoading && <MoonLoader color="#36d7b7" />
+    }
 
     return (
         <AuthContext.Provider value={userInfo}>

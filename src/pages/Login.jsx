@@ -4,6 +4,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import SocialLogin from "../components/SocialLogin";
 
 
 const Login = () => {
@@ -66,6 +67,11 @@ const Login = () => {
 
 
                         <input type="submit" value='Login' className="btn btn-neutral"></input>
+                        <div className="divider">Or</div>
+
+                        {
+                            <SocialLogin />
+                        }
 
                         <p className="text-center">Have no Account
                             <Link className="ml-1 link" to='/signup'>
