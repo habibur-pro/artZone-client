@@ -1,6 +1,6 @@
 
 import { NavLink } from 'react-router-dom';
-import MyContainer from './MyContainer';
+import MyContainer from '../MyContainer';
 import { Turn as Hamburger } from 'hamburger-react'
 import { useState } from 'react';
 
