@@ -10,7 +10,15 @@ import profileImage from '../../assets/images/profile.jpg'
 
 const Navbar = () => {
     const [isOpen, setOpen] = useState(false)
-    const { user } = useAuth()
+    const { user, logOut } = useAuth()
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                console.log('logged Out user')
+            })
+            .catch(error => console.log(error))
+    }
 
     const navLinks =
         <>
@@ -48,7 +56,10 @@ const Navbar = () => {
                         {
                             user && <img className='w-12 h-12 rounded-full' src={user.photoURL || profileImage} />
                         }
-                        <Link to='/login'>  <button className='btn btn-neutral'>Login</button></Link>
+                        {
+                            user ? <button onClick={handleLogOut} className='btn'>LogOut</button>
+                                : <Link to='/login'>  <button className='btn btn-neutral'>Login</button></Link>
+                        }
 
                     </div>
 

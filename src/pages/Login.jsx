@@ -5,14 +5,37 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import SocialLogin from "../components/SocialLogin";
+import { ImSpinner10 } from "react-icons/im";
+import useAuth from "../hooks/useAuth";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
+    const { logInWithEmailPassword } = useAuth()
+    const [loginLoading, setLoginLoading] = useState(false)
     const [show, setShow] = useState(false)
+    const [loginError, setLoginError] = useState('')
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
+        console.log(data.email, data.password)
+        setLoginLoading(true)
+        logInWithEmailPassword(data?.email, data?.password)
 
-        console.log(data)
+            .then(loggedUser => {
+                setLoginLoading(false)
+                console.log(loggedUser.user)
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Login  Successfull ',
+                    showConfirmButton: false,
+                    timer: 1000
+                })
+            })
+            .catch(error => {
+                setLoginLoading(false)
+                setLoginError(error.code)
+            })
     };
 
 
@@ -65,8 +88,12 @@ const Login = () => {
                         {/* password error  */}
                         {errors.password && <span className="text-red-500">Password is required</span>}
 
-
-                        <input type="submit" value='Login' className="btn btn-neutral"></input>
+                        {
+                            loginError && <p className="text-red-500">{loginError}</p>
+                        }
+                        <button disabled={loginLoading} type="submit" className="btn btn-neutral">
+                            {loginLoading ? <span className="animate-spin text-lg"><ImSpinner10 /></span> : 'Login'}
+                        </button>
                         <div className="divider">Or</div>
 
                         {

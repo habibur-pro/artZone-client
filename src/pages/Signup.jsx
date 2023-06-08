@@ -279,7 +279,7 @@ const Signup = () => {
                         <SocialLogin />
 
                         <p className="text-center">Already Have an Account ?
-                            <Link className="ml-1 link" to='/signup'>
+                            <Link className="ml-1 link" to='/login'>
                                 Login
                             </Link>
                         </p>
