@@ -1,9 +1,14 @@
 
 import { MdOutlineAlternateEmail } from "react-icons/md";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { AiOutlineEye, AiOutlineEyeInvisible, AiOutlinePhone } from "react-icons/ai";
+import { ImSpinner10 } from "react-icons/im";
+import { BiUser } from "react-icons/bi";
+import { MdPhotoCamera } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import useAuth from "../hooks/useAuth";
+import Swal from "sweetalert2";
 
 
 const Signup = () => {
@@ -11,28 +16,16 @@ const Signup = () => {
     const [isConfirmPassShow, setConfirmPassShow] = useState(false)
     const [password, setPassword] = useState('')
     const [confirmError, setConfirmError] = useState('')
+    const [registerError, setRegisterError] = useState('')
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const { registerWithEmailPassword, updateUserProfile } = useAuth()
+    const [registerLoading, setRegisterLoading] = useState(false)
+
 
 
     const imageHostKey = import.meta.env.VITE_IMAGE_UPLOAD_KEY
     const imageHostingUrl = `https://api.imgbb.com/1/upload?expiration=600&key=${imageHostKey}`
-
     // Todo: revove expiration from imagehosting url
-    const onSubmit = (data) => {
-        const imageFile = data?.photo[0];
-        const formData = new FormData();
-        formData.append('image', imageFile);
-
-        fetch(imageHostingUrl, {
-            method: 'POST',
-            body: formData
-        })
-            .then((res) => res.json())
-            .then((result) => console.log('upload', result))
-            .catch((error) => console.log(error));
-
-        // Rest of your code...
-    };
 
     // validata password and confirm password 
     const valiDatePass = e => {
@@ -46,9 +39,64 @@ const Signup = () => {
         else {
             setConfirmError('')
         }
-
-
     }
+
+
+    const onSubmit = (data) => {
+        const imageFile = data?.photo[0];
+        const formData = new FormData();
+        formData.append('image', imageFile);
+
+        const { name, email, confirmPassword } = data || {}
+        setRegisterLoading(true)
+        // host photo 
+        fetch(imageHostingUrl, {
+            method: 'POST',
+            body: formData
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                const imageUrl = result?.data?.display_url
+                if (imageUrl) {
+
+                    // register user 
+                    registerWithEmailPassword(email, confirmPassword)
+                        .then(registerResult => {
+                            const user = registerResult?.user;
+
+                            // update user profile 
+                            if (user?.email) {
+                                updateUserProfile(name, imageUrl)
+                                    .then(() => {
+                                        setRegisterLoading(false)
+                                        Swal.fire({
+                                            position: 'center',
+                                            icon: 'success',
+                                            title: 'Registration Successfull ',
+                                            showConfirmButton: false,
+                                            timer: 1000
+                                        })
+                                    })
+                                    .catch(error => {
+                                        setRegisterError(error?.message)
+                                        setRegisterLoading(false)
+                                    })
+                            }
+                        })
+                        .catch(error => {
+                            setRegisterError(error?.message)
+                            setRegisterLoading(false)
+                        })
+                }
+            })
+            .catch((error) => {
+                setConfirmError(error.message)
+                setRegisterLoading(false)
+            });
+
+
+    };
+
 
 
 
@@ -74,7 +122,7 @@ const Signup = () => {
 
 
                                     <span className="absolute inset-y-0 end-0 grid place-content-center px-4 text-md">
-                                        <MdOutlineAlternateEmail />
+                                        <BiUser />
                                     </span>
 
                                 </div>
@@ -187,7 +235,7 @@ const Signup = () => {
 
 
                                     <span className="absolute inset-y-0 end-0 grid place-content-center px-4 text-md">
-                                        <MdOutlineAlternateEmail />
+                                        <MdPhotoCamera />
                                     </span>
 
                                 </div>
@@ -207,21 +255,25 @@ const Signup = () => {
 
 
                                     <span className="absolute inset-y-0 end-0 grid place-content-center px-4 text-md">
-                                        <MdOutlineAlternateEmail />
+                                        <AiOutlinePhone />
                                     </span>
 
 
                                 </div>
-                                {/* email error  */}
+                                {/* Phone error  */}
                                 {errors.phone && <span className="text-red-500 text-sm">phone is required</span>}
                             </div>
                         </div>
 
 
 
+                        {
+                            registerError && <p>{registerError}</p>
+                        }
 
-
-                        <input type="submit" value='Signup' className="btn btn-neutral"></input>
+                        <button disabled={registerLoading} type="submit" className="btn btn-neutral">
+                            {registerLoading ? <span className="animate-spin text-lg"><ImSpinner10 /></span> : 'Signup'}
+                        </button>
 
                         <p className="text-center">Already Have an Account ?
                             <Link className="ml-1 link" to='/signup'>
