@@ -1,4 +1,4 @@
-import MyContainer from "../components/MyContainer";
+
 import { MdOutlineAlternateEmail } from "react-icons/md";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link } from "react-router-dom";
@@ -7,63 +7,218 @@ import { useForm } from "react-hook-form";
 
 
 const Signup = () => {
-    const [show, setShow] = useState(false)
+    const [isPassShow, setPassShow] = useState(false)
+    const [isConfirmPassShow, setConfirmPassShow] = useState(false)
+    const [password, setPassword] = useState('')
+    const [confirmError, setConfirmError] = useState('')
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => {
 
-        console.log(data)
+
+    const imageHostKey = import.meta.env.VITE_IMAGE_UPLOAD_KEY
+    const imageHostingUrl = `https://api.imgbb.com/1/upload?expiration=600&key=${imageHostKey}`
+
+    // Todo: revove expiration from imagehosting url
+    const onSubmit = (data) => {
+        const imageFile = data?.photo[0];
+        const formData = new FormData();
+        formData.append('image', imageFile);
+
+        fetch(imageHostingUrl, {
+            method: 'POST',
+            body: formData
+        })
+            .then((res) => res.json())
+            .then((result) => console.log('upload', result))
+            .catch((error) => console.log(error));
+
+        // Rest of your code...
     };
+
+    // validata password and confirm password 
+    const valiDatePass = e => {
+        const pass = e.target.value;
+        setPassword(pass)
+    }
+    const validataConfirmPass = e => {
+        if (password !== e.target.value) {
+            setConfirmError('Password not matched')
+        }
+        else {
+            setConfirmError('')
+        }
+
+
+    }
 
 
 
     return (
-        <div className="">
-            <MyContainer>
-                <div className="flex justify-center items-center">
+        <div className="flex  justify-center items-center mt-5">
+            <>
+                <div className="">
                     <form onSubmit={handleSubmit(onSubmit)}
-                        className="flex flex-col w-1/3 mt-20 gap-5 border p-5">
-                        <h3 className="text-3xl font-bold">Register Your Account</h3>
-                        <div className="relative border rounded">
-                            <input
-                                {...register("email", { required: true })}
-                                type="email"
-                                className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                                placeholder="Enter email"
-                            />
+                        className="flex flex-col w-auto gap-5 border p-5">
+                        <h3 className="text-3xl font-bold text-center mb-5">Register Your Account</h3>
+
+                        {/* name and email  */}
+                        <div className="md:grid grid-cols-2 gap-5">
+                            {/* name field  */}
+                            <div>
+                                <div className="relative border rounded ">
+                                    <input
+                                        {...register("name", { required: true })}
+                                        type="text"
+                                        className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                                        placeholder="Enter Full Name"
+                                    />
 
 
-                            <span className="absolute inset-y-0 end-0 grid place-content-center px-4 text-md">
-                                <MdOutlineAlternateEmail />
-                            </span>
+                                    <span className="absolute inset-y-0 end-0 grid place-content-center px-4 text-md">
+                                        <MdOutlineAlternateEmail />
+                                    </span>
+
+                                </div>
+                                {/* name error  */}
+                                {errors.name && <span className="text-red-500 text-sm">Name is required</span>}
+                            </div>
+
+                            {/* email filed  */}
+                            <div>
+                                <div className="relative border rounded">
+                                    <input
+                                        {...register("email", { required: true })}
+                                        type="email"
+                                        className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                                        placeholder="Enter email"
+                                    />
 
 
+                                    <span className="absolute inset-y-0 end-0 grid place-content-center px-4 text-md">
+                                        <MdOutlineAlternateEmail />
+                                    </span>
+
+
+                                </div>
+                                {/* email error  */}
+                                {errors.email && <span className="text-red-500 text-sm">Email is required</span>}
+                            </div>
                         </div>
 
-                        {/* password filed  */}
-                        <div className="relative border rounded">
-                            <input
-                                {...register("password", { required: true, pattern: /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.{6}$).*/ })}
-                                type={show ? 'password' : 'text'}
-                                className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                                placeholder="Password"
-                            />
+                        {/* password and confirm password  */}
+                        <div className="md:grid grid-cols-2 gap-5">
+                            {/* password filed  */}
+                            <div>
+                                <div className="relative border rounded">
+                                    <input
+                                        onBlurCapture={valiDatePass}
+                                        {...register("password", { required: true, pattern: /^(?=.*[A-Z])(?=.*[\W_]).{6,}$/ })}
+                                        type={isPassShow ? 'password' : 'text'}
+                                        className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                                        placeholder="Password"
+                                    />
 
-                            <span className="absolute inset-y-0 end-0 grid place-content-center px-4 text-md">
-                                <span onClick={() => setShow(!show)}>
-                                    {
-                                        show ? <AiOutlineEye />
-                                            :
-                                            <AiOutlineEyeInvisible />
-                                    }
-                                </span>
+                                    <span className="absolute inset-y-0 end-0 grid place-content-center px-4 text-md">
+                                        <span onClick={() => setPassShow(!isPassShow)}>
+                                            {
+                                                isPassShow ? <AiOutlineEye />
+                                                    :
+                                                    <AiOutlineEyeInvisible />
+                                            }
+                                        </span>
 
-                            </span>
+                                    </span>
+                                </div>
+                                {/* password error  */}
+                                {
+                                    errors.password?.type === 'required' && <span className="text-red-500 text-sm">Password is required</span>
+                                }
+                                {
+                                    errors.password?.type === 'pattern' && <span className="whitespace-pre text-red-500 text-sm">Password must have 6 character, 1 capital letter, 1 special character</span>
+                                }
+                            </div>
+
+
+                            {/* confirm password  */}
+                            <div>
+                                <div className="relative border rounded">
+                                    <input
+                                        {...register("confirmPassword", { required: true })}
+                                        onKeyUp={validataConfirmPass}
+                                        type={isConfirmPassShow ? 'password' : 'text'}
+                                        className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                                        placeholder="Confirm Password"
+                                    />
+
+                                    <span className="absolute inset-y-0 end-0 grid place-content-center px-4 text-md">
+                                        <span onClick={() => setConfirmPassShow(!isConfirmPassShow)}>
+                                            {
+                                                isConfirmPassShow ? <AiOutlineEye />
+                                                    :
+                                                    <AiOutlineEyeInvisible />
+                                            }
+                                        </span>
+
+                                    </span>
+                                </div>
+                                {/* confirm password error  */}
+                                {
+                                    errors.confirmPassword?.type === 'required' && <span className="text-red-500 text-sm">Confirm Password is required</span>
+                                }
+                                {
+                                    confirmError && errors.confirmPassword?.type !== 'required' &&
+                                    <span className="text-sm text-red-500">{confirmError}</span>
+
+                                }
+
+                            </div>
                         </div>
-                        {/* email error  */}
-                        {errors.email && <span className="text-red-500">Email is required</span>}
-                        {/* password error  */}
-                        {errors.required.password && <span className="text-red-500">Password is required</span>}
-                        {errors.password.type = 'pattern' && <span className="text-red-500">Password must have 6 character, 1 capital letter, 1 special character</span>}
+
+                        {/* Photo and Phone  */}
+                        <div className="md:grid grid-cols-2 gap-5">
+                            {/* Photo Filed */}
+                            <div>
+                                <div className="relative border rounded ">
+                                    <input
+                                        {...register("photo", { required: true })}
+                                        type="file"
+                                        className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+
+                                    />
+
+
+                                    <span className="absolute inset-y-0 end-0 grid place-content-center px-4 text-md">
+                                        <MdOutlineAlternateEmail />
+                                    </span>
+
+                                </div>
+                                {/* Photo error  */}
+                                {errors.photo && <span className="text-red-500 text-sm">Photo is required</span>}
+                            </div>
+
+                            {/* Phone filed  */}
+                            <div>
+                                <div className="relative border rounded">
+                                    <input
+                                        {...register("phone", { required: true })}
+                                        type="number"
+                                        className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                                        placeholder="Enter Phone"
+                                    />
+
+
+                                    <span className="absolute inset-y-0 end-0 grid place-content-center px-4 text-md">
+                                        <MdOutlineAlternateEmail />
+                                    </span>
+
+
+                                </div>
+                                {/* email error  */}
+                                {errors.phone && <span className="text-red-500 text-sm">phone is required</span>}
+                            </div>
+                        </div>
+
+
+
 
 
                         <input type="submit" value='Signup' className="btn btn-neutral"></input>
@@ -77,7 +232,7 @@ const Signup = () => {
 
                 </div>
 
-            </MyContainer>
+            </>
         </div>
     );
 };
