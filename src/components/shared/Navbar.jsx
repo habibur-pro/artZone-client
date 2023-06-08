@@ -1,5 +1,5 @@
 
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import MyContainer from '../MyContainer';
 import { Turn as Hamburger } from 'hamburger-react'
 import { useState } from 'react';
@@ -40,7 +40,7 @@ const Navbar = () => {
 
                     </ul>
                     <div className='hidden md:block'>
-                        <button className='btn btn-neutral'>Login</button>
+                        <Link to='/login'>  <button className='btn btn-neutral'>Login</button></Link>
                     </div>
 
 
@@ -54,7 +54,7 @@ const Navbar = () => {
 
                         {navLinks}
                         <div className=''>
-                            <button className='btn btn-neutral'>Login</button>
+                            <Link to='/login'>  <button className='btn btn-neutral'>Login</button></Link>
                         </div>
 
                     </ul>
