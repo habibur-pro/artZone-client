@@ -10,3 +10,22 @@ export const saveUser = async (user) => {
     const data = res.data
     return data
 }
+
+// create token 
+
+export const createToken = async (user) => {
+    if (user.email) {
+        const res = await axios.post(`${baserUrl}/jwt`, {
+            emai: user.email
+        })
+        const data = res?.data;
+        localStorage.setItem('access-token', data?.token)
+    }
+
+}
+
+export const getRole = async (email) => {
+    const res = await axios.get(`${baserUrl}/users/${email}`)
+    const data = res.data;
+    return data?.role || 'user'
+}

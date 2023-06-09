@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, onAuthStateChanged, signOut, updateProfile, GoogleAuthProvider } from "firebase/auth";
 import app from "../firebase/firebase.config";
 import { MoonLoader } from "react-spinners";
+import { createToken, getRole } from "../api/auth";
 
 
 const auth = getAuth(app);
@@ -11,6 +12,17 @@ export const AuthContext = createContext(null)
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [isLoading, setLoading] = useState(true)
+    const [userRole, setUserRole] = useState('')
+
+    // get user role 
+    useEffect(() => {
+        if (user?.email) {
+            getRole(user?.email)
+                .then(role => {
+                    setUserRole(role)
+                })
+        }
+    }, [user])
 
     {
         isLoading && <span><MoonLoader color="#36d7b7" /></span>
@@ -58,6 +70,7 @@ const AuthProvider = ({ children }) => {
     const userInfo = {
         user,
         setUser,
+        userRole,
         registerWithEmailPassword,
         logInWithEmailPassword,
         loginWithGoogle,
@@ -72,6 +85,9 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser)
+            if (currentUser?.email) {
+                createToken(currentUser)
+            }
             console.log('current user', currentUser)
             setLoading(false)
         })

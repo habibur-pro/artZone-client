@@ -11,8 +11,10 @@ import profileImage from '../../assets/images/profile.jpg'
 
 const Navbar = () => {
     const [isOpen, setOpen] = useState(false)
-    const { user, logOut } = useAuth()
+    const { user, logOut, userRole } = useAuth()
     console.log('user from navbar', user)
+
+    console.log('user role from navbar', userRole)
 
     const handleLogOut = () => {
         logOut()

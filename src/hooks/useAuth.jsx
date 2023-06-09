@@ -6,6 +6,7 @@ const useAuth = () => {
     const {
         user,
         setUser,
+        userRole,
         registerWithEmailPassword,
         logInWithEmailPassword,
         loginWithGoogle,
@@ -17,6 +18,7 @@ const useAuth = () => {
     return {
         user,
         setUser,
+        userRole,
         registerWithEmailPassword,
         logInWithEmailPassword,
         loginWithGoogle,
