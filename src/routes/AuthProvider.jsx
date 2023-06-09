@@ -12,11 +12,13 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [isLoading, setLoading] = useState(true)
 
-
+    {
+        isLoading && <span><MoonLoader color="#36d7b7" /></span>
+    }
 
     // email password register 
     const registerWithEmailPassword = (email, password) => {
-        setLoading(true)
+        // setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
@@ -42,6 +44,7 @@ const AuthProvider = ({ children }) => {
 
     // updata profile 
     const updateUserProfile = (userName, userImage) => {
+        // setLoading(true)
         console.log('update info', userName, userImage)
         return updateProfile(auth.currentUser, {
             displayName: userName,
@@ -54,12 +57,14 @@ const AuthProvider = ({ children }) => {
 
     const userInfo = {
         user,
+        setUser,
         registerWithEmailPassword,
         logInWithEmailPassword,
         loginWithGoogle,
         updateUserProfile,
         logOut,
         isLoading,
+        setLoading
     }
 
 
@@ -74,9 +79,7 @@ const AuthProvider = ({ children }) => {
     },)
 
 
-    {
-        isLoading && <MoonLoader color="#36d7b7" />
-    }
+
 
     return (
         <AuthContext.Provider value={userInfo}>

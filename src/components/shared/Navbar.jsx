@@ -8,9 +8,11 @@ import profileImage from '../../assets/images/profile.jpg'
 
 
 
+
 const Navbar = () => {
     const [isOpen, setOpen] = useState(false)
     const { user, logOut } = useAuth()
+    console.log('user from navbar', user)
 
     const handleLogOut = () => {
         logOut()
@@ -53,8 +55,8 @@ const Navbar = () => {
 
 
                     <div className='hidden md:flex space-x-5'>
-                        {
-                            user && <img className='w-12 h-12 rounded-full' src={user.photoURL || profileImage} />
+                        {user &&
+                            <img className='w-12 h-12 rounded-full' src={user && user.photoURL ? user.photoURL : profileImage} />
                         }
                         {
                             user ? <button onClick={handleLogOut} className='btn'>LogOut</button>
@@ -73,10 +75,20 @@ const Navbar = () => {
                     <ul className={`${isOpen ? 'h-auto opacity-100' : 'h-0 opacity-0'} left-0 top-[60px] origin-top duration-300 md:hidden  absolute  bg-black text-white w-full pl-5 space-y-3 py-5 mt-3 z-10`}>
 
                         {navLinks}
-                        { }
-                        <div className=''>
-                            <Link to='/login'>  <button className='btn btn-neutral'>Login</button></Link>
+                        {/* profile image  */}
+                        <div className='space-y-5'>
+                            {user &&
+                                <img className='w-12 h-12 rounded-full' src={user && user.photoURL ? user.photoURL : profileImage} />
+                            }
+
+                            {/* login logout button  */}
+                            {
+                                user ? <button onClick={handleLogOut} className='btn'>LogOut</button>
+                                    : <Link to='/login'>  <button className='btn btn-neutral'>Login</button></Link>
+                            }
+
                         </div>
+
 
                     </ul>
 

@@ -3,22 +3,27 @@ import { AuthContext } from "../routes/AuthProvider";
 
 
 const useAuth = () => {
-    const { user,
+    const {
+        user,
+        setUser,
         registerWithEmailPassword,
         logInWithEmailPassword,
         loginWithGoogle,
         updateUserProfile,
         logOut,
         isLoading,
+        setLoading
     } = useContext(AuthContext)
     return {
         user,
+        setUser,
         registerWithEmailPassword,
         logInWithEmailPassword,
         loginWithGoogle,
         updateUserProfile,
         logOut,
         isLoading,
+        setLoading,
     }
 };
 

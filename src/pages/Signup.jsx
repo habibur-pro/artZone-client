@@ -44,12 +44,14 @@ const Signup = () => {
 
 
     const onSubmit = (data) => {
+        setRegisterError('')
+        setRegisterLoading(true)
         const imageFile = data?.photo[0];
         const formData = new FormData();
         formData.append('image', imageFile);
 
         const { name, email, confirmPassword } = data || {}
-        setRegisterLoading(true)
+
         // host photo 
         fetch(imageHostingUrl, {
             method: 'POST',
@@ -69,6 +71,7 @@ const Signup = () => {
                             if (user?.email) {
                                 updateUserProfile(name, imageUrl)
                                     .then(() => {
+                                        // setUser(user)
                                         setRegisterLoading(false)
                                         Swal.fire({
                                             position: 'center',
@@ -269,11 +272,11 @@ const Signup = () => {
 
 
                         {
-                            registerError && <p>{registerError}</p>
+                            registerError && <p className="text-sm text-red-500">{registerError}</p>
                         }
 
                         <button disabled={registerLoading} type="submit" className="btn btn-neutral">
-                            {registerLoading ? <span className="animate-spin text-lg"><ImSpinner10 /></span> : 'Signup'}
+                            {registerLoading ? (<span className="animate-spin text-lg"><ImSpinner10 /></span>) : 'Signup'}
                         </button>
                         <div className="divider">Or</div>
                         <SocialLogin />
