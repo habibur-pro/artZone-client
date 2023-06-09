@@ -19,7 +19,7 @@ const Navbar = () => {
     const handleLogOut = () => {
         logOut()
             .then(() => {
-                console.log('logged Out user')
+                localStorage.removeItem('access-token')
             })
             .catch(error => console.log(error))
     }

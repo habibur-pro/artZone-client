@@ -2,6 +2,8 @@ import { ImSpinner10 } from "react-icons/im";
 import useAuth from "../hooks/useAuth";
 import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
+import { saveUser } from "../api/auth";
+import Swal from "sweetalert2";
 
 const SocialLogin = () => {
     const { loginWithGoogle } = useAuth()
@@ -12,7 +14,22 @@ const SocialLogin = () => {
         loginWithGoogle()
             .then(loggedUser => {
                 console.log('google user', loggedUser.user)
-                setGoogleLoading(false)
+                saveUser(loggedUser)
+                    .then(() => {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Login Successfull ',
+                            showConfirmButton: false,
+                            timer: 1000
+                        })
+                        setGoogleLoading(false)
+                    })
+                    .catch(error => {
+                        console.log(error)
+                        setGoogleLoading(false)
+                    })
+
             })
             .catch(error => {
                 console.log('google error', error)
