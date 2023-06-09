@@ -10,6 +10,8 @@ import { useForm } from "react-hook-form";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
 import SocialLogin from "../components/SocialLogin";
+import { saveUser } from "../api/auth";
+
 
 
 const Signup = () => {
@@ -21,6 +23,7 @@ const Signup = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { registerWithEmailPassword, updateUserProfile } = useAuth()
     const [registerLoading, setRegisterLoading] = useState(false)
+
 
 
 
@@ -71,6 +74,10 @@ const Signup = () => {
                             if (user?.email) {
                                 updateUserProfile(name, imageUrl)
                                     .then(() => {
+                                        saveUser(user)
+                                            .then(data => {
+                                                console.log('from signup', data)
+                                            })
                                         // setUser(user)
                                         setRegisterLoading(false)
                                         Swal.fire({
