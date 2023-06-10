@@ -5,7 +5,10 @@ import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import Teachers from "../pages/Teachers";
 import Classes from "../pages/Classes";
+import Dashboard from "../layout/Dashboard";
 import PrivetRoute from "./PrivetRoute";
+import SelectedClass from "../pages/Dashboard/SelectedClass";
+import EnroledClass from "../pages/Dashboard/EnroledClass";
 
 const router = createBrowserRouter([
     {
@@ -33,6 +36,21 @@ const router = createBrowserRouter([
                 element: <Classes></Classes>
             }
         ]
+    },
+    {
+        path: 'dashboard',
+        element: <PrivetRoute><Dashboard></Dashboard></PrivetRoute>,
+        children: [
+            {
+                path: 'my_selected_class',
+                element: <SelectedClass></SelectedClass>
+            },
+            {
+                path: 'my_enroled_class',
+                element: <EnroledClass></EnroledClass>
+            }
+        ]
+
     }
 ])
 export default router

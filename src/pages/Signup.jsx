@@ -28,7 +28,7 @@ const Signup = () => {
 
 
     const imageHostKey = import.meta.env.VITE_IMAGE_UPLOAD_KEY
-    const imageHostingUrl = `https://api.imgbb.com/1/upload?expiration=600&key=${imageHostKey}`
+    const imageHostingUrl = `https://api.imgbb.com/1/upload?key=${imageHostKey}`
     // Todo: revove expiration from imagehosting url
 
     // validata password and confirm password 

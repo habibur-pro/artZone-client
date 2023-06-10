@@ -45,45 +45,22 @@ const Navbar = () => {
         </>
 
     return (
-        <div className='py-3 border-b bg-transparent bg-white'>
-            <MyContainer>
-                <div className='flex justify-between items-center '>
-                    <h3 className='text-3xl font-bold'>Art<span>Zone</span></h3>
-                    <ul className='hidden md:flex gap-5'>
+        <div>
+            <div className='py-3 border-b bg-transparent fixed w-full  z-50 bg-white'>
+                <MyContainer>
+                    <div className='flex justify-between items-center '>
+                        <h3 className='text-3xl font-bold'>Art<span>Zone</span></h3>
+                        <ul className='hidden md:flex gap-5'>
 
-                        {navLinks}
+                            {navLinks}
 
-                    </ul>
-
-
-                    <div className='hidden md:flex space-x-5'>
-                        {user &&
-                            <img className='w-12 h-12 rounded-full' src={user && user.photoURL ? user.photoURL : profileImage} />
-                        }
-                        {
-                            user ? <button onClick={handleLogOut} className='btn'>LogOut</button>
-                                : <Link to='/login'>  <button className='btn btn-neutral'>Login</button></Link>
-                        }
-
-                    </div>
+                        </ul>
 
 
-
-                    <div onClick={() => setOpen(!isOpen)} className='md:hidden'>
-                        <Hamburger hideOutline={false} />
-                    </div>
-
-                    {/* mobile rensponsive  */}
-                    <ul className={`${isOpen ? 'h-auto opacity-100' : 'h-0 opacity-0'} left-0 top-[60px] origin-top duration-300 md:hidden  absolute  bg-secondary  text-white w-full pl-5 space-y-3 py-5 mt-3 z-10`}>
-
-                        {navLinks}
-                        {/* profile image  */}
-                        <div className='space-y-5'>
+                        <div className='hidden md:flex space-x-5'>
                             {user &&
                                 <img className='w-12 h-12 rounded-full' src={user && user.photoURL ? user.photoURL : profileImage} />
                             }
-
-                            {/* login logout button  */}
                             {
                                 user ? <button onClick={handleLogOut} className='btn'>LogOut</button>
                                     : <Link to='/login'>  <button className='btn btn-neutral'>Login</button></Link>
@@ -92,10 +69,37 @@ const Navbar = () => {
                         </div>
 
 
-                    </ul>
+
+                        <div onClick={() => setOpen(!isOpen)} className='md:hidden'>
+                            <Hamburger hideOutline={false} />
+                        </div>
+
+
+
+                    </div>
+
+                </MyContainer>
+            </div>
+            {/* mobile rensponsive  */}
+            <ul className={`${isOpen ? ' top-0 fixed ' : ' -top-[100%]'} left-0 top-[60px] origin-top duration-300 md:hidden  absolute  bg-secondary  text-white w-full pl-5 space-y-3 py-5 mt-3 z-40`}>
+
+                {navLinks}
+                {/* profile image  */}
+                <div className='space-y-5'>
+                    {user &&
+                        <img className='w-12 h-12 rounded-full' src={user && user.photoURL ? user.photoURL : profileImage} />
+                    }
+
+                    {/* login logout button  */}
+                    {
+                        user ? <button onClick={handleLogOut} className='btn'>LogOut</button>
+                            : <Link to='/login'>  <button className='btn btn-neutral'>Login</button></Link>
+                    }
 
                 </div>
-            </MyContainer>
+
+
+            </ul>
         </div>
     );
 };
