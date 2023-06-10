@@ -1,9 +1,9 @@
 // import axios from "axios";
 
-// const baserUrl = import.meta.env.VITE_BASE_URL;
+// const baseUrl = import.meta.env.VITE_BASE_URL;
 // // get all classes
 // export const getClassess = async () => {
-//     const res = await axios.get(`${baserUrl}/classess`)
+//     const res = await axios.get(`${baseUrl}/classess`)
 //     return res.data
 
 // }

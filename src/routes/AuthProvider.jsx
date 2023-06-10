@@ -19,7 +19,7 @@ const AuthProvider = ({ children }) => {
         if (user?.email) {
             getRole(user?.email)
                 .then(role => {
-                    console.log('role from', role)
+                    console.log('user role from authprovider', role)
                     setUserRole(role)
                 })
         }

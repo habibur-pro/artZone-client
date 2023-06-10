@@ -5,6 +5,7 @@ import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import Teachers from "../pages/Teachers";
 import Classes from "../pages/Classes";
+import PrivetRoute from "./PrivetRoute";
 
 const router = createBrowserRouter([
     {

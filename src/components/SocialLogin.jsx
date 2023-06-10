@@ -13,7 +13,7 @@ const SocialLogin = () => {
         setGoogleLoading(true)
         loginWithGoogle()
             .then(loggedUser => {
-                console.log('google user', loggedUser.user)
+
                 saveUser(loggedUser?.user)
                     .then(() => {
                         Swal.fire({

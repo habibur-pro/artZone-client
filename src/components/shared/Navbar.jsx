@@ -11,10 +11,8 @@ import profileImage from '../../assets/images/profile.jpg'
 
 const Navbar = () => {
     const [isOpen, setOpen] = useState(false)
-    const { user, logOut, userRole } = useAuth()
-    console.log('user from navbar', user)
+    const { user, logOut } = useAuth()
 
-    console.log('user role from navbar', userRole)
 
     const handleLogOut = () => {
         logOut()
@@ -38,10 +36,12 @@ const Navbar = () => {
                 className={({ isActive }) => isActive ? "text-red-400" : ""
                 }>Classes</NavLink>
             </ li>
-            < li > <NavLink to='/dashboard'
-                className={({ isActive }) => isActive ? "text-red-400" : ""
-                }>Dashboard </NavLink>
-            </ li>
+            {
+                user && < li > <NavLink to='/dashboard'
+                    className={({ isActive }) => isActive ? "text-red-400" : ""
+                    }>Dashboard </NavLink>
+                </ li>
+            }
         </>
 
     return (

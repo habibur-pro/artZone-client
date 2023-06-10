@@ -9,7 +9,7 @@ import Spinner from "../../components/Spinner";
 
 const TopClasses = () => {
     const { data: classes, isLoading } = useGetTeacherClass('classes', 6)
-    console.log('classes from to class', classes)
+
     return (
         <div className="my-20">
             {
