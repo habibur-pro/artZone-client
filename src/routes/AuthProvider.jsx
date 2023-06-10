@@ -1,9 +1,9 @@
 import { createContext, useEffect, useState } from "react";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, onAuthStateChanged, signOut, updateProfile, GoogleAuthProvider } from "firebase/auth";
 import app from "../firebase/firebase.config";
-import { MoonLoader } from "react-spinners";
-import { createToken, getRole } from "../api/auth";
 
+import { createToken, getRole } from "../api/auth";
+import Spinner from '../components/Spinner'
 
 const auth = getAuth(app);
 
@@ -13,6 +13,10 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [isLoading, setLoading] = useState(true)
     const [userRole, setUserRole] = useState('')
+
+    {
+        isLoading && <Spinner />
+    }
 
     // get user role 
     useEffect(() => {
@@ -25,9 +29,7 @@ const AuthProvider = ({ children }) => {
         }
     }, [user])
 
-    {
-        isLoading && <span><MoonLoader color="#36d7b7" /></span>
-    }
+
 
     // email password register 
     const registerWithEmailPassword = (email, password) => {
@@ -94,7 +96,6 @@ const AuthProvider = ({ children }) => {
         })
         return () => unsubscribe()
     },)
-
 
 
 
