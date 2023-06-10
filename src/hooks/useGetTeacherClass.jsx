@@ -7,7 +7,7 @@ const useGetTeacherClass = (route, limit = 0) => {
     const url = `${baseUrl}/${route}?limit=${limit}`
     console.log('rul', url)
     const { data, isLoading } = useQuery({
-        queryKey: [route],
+        queryKey: [route, limit],
         queryFn: async () => {
             const res = await axios.get(`${baseUrl}/${route}?limit=${limit}`)
             console.log('data fro hook', res.data)

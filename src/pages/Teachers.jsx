@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 import MyContainer from "../components/MyContainer";
 import PageHeader from "../components/PageHeader";
 import TeacherCard from "../components/TeacherCard";
