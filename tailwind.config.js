@@ -8,5 +8,17 @@ export default {
     extend: {},
   },
   plugins: [require("daisyui")],
+  daisyui: {
+    themes: [
+      {
+        light: {
+          ...require("daisyui/src/theming/themes")["[data-theme=light]"],
+          "primary": "#ce373a",
+          "primary-focus": "#2d3448",
+          "secondary": "#2d3448"
+        },
+      },
+    ],
+  },
 }
 

@@ -74,7 +74,7 @@ const Navbar = () => {
                     </div>
 
                     {/* mobile rensponsive  */}
-                    <ul className={`${isOpen ? 'h-auto opacity-100' : 'h-0 opacity-0'} left-0 top-[60px] origin-top duration-300 md:hidden  absolute  bg-black text-white w-full pl-5 space-y-3 py-5 mt-3 z-10`}>
+                    <ul className={`${isOpen ? 'h-auto opacity-100' : 'h-0 opacity-0'} left-0 top-[60px] origin-top duration-300 md:hidden  absolute  bg-secondary  text-white w-full pl-5 space-y-3 py-5 mt-3 z-10`}>
 
                         {navLinks}
                         {/* profile image  */}

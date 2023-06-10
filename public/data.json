@@ -1,0 +1,65 @@
+[
+    {
+        "name": "Sketch Art",
+        "image": "https://i.ibb.co/xL6WCBT/art.jpg",
+        "seats": 100,
+        "enroled": 50,
+        "rating": 5,
+        "price": 500,
+        "instructor": "Jhon Smith"
+    },
+    {
+        "name": "Sketch Art",
+        "image": "https://i.ibb.co/xL6WCBT/art.jpg",
+        "seats": 100,
+        "enroled": 20,
+        "rating": 5,
+        "price": 100,
+        "instructor": "Jhon Smith"
+    },
+    {
+        "name": "Sketch Art",
+        "image": "https://i.ibb.co/xL6WCBT/art.jpg",
+        "seats": 100,
+        "enroled": 5,
+        "rating": 5,
+        "price": 200,
+        "instructor": "Jhon Smith"
+    },
+    {
+        "name": "Sketch Art",
+        "image": "https://i.ibb.co/xL6WCBT/art.jpg",
+        "seats": 100,
+        "enroled": 30,
+        "rating": 5,
+        "price": 50,
+        "instructor": "Jhon Smith"
+    },
+    {
+        "name": "Sketch Art",
+        "image": "https://i.ibb.co/xL6WCBT/art.jpg",
+        "seats": 100,
+        "enroled": 12,
+        "rating": 5,
+        "price": 700,
+        "instructor": "Jhon Smith"
+    },
+    {
+        "name": "Sketch Art",
+        "image": "https://i.ibb.co/xL6WCBT/art.jpg",
+        "seats": 100,
+        "enroled": 2,
+        "rating": 5,
+        "price": 52,
+        "instructor": "Jhon Smith"
+    },
+    {
+        "name": "Sketch Art",
+        "image": "https://i.ibb.co/xL6WCBT/art.jpg",
+        "seats": 100,
+        "enroled": 13,
+        "rating": 5,
+        "price": 80,
+        "instructor": "Jhon Smith"
+    }
+]

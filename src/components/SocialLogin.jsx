@@ -14,7 +14,7 @@ const SocialLogin = () => {
         loginWithGoogle()
             .then(loggedUser => {
                 console.log('google user', loggedUser.user)
-                saveUser(loggedUser)
+                saveUser(loggedUser?.user)
                     .then(() => {
                         Swal.fire({
                             position: 'center',
