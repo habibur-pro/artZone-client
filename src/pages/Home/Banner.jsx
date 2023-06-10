@@ -20,7 +20,7 @@ const Banner = () => {
                         <div className="text-white   absolute top-0 left-0 w-full bg-secondary h-full bg-opacity-80 flex justify-center items-center">
 
                             <div>
-                                <p className="white text-4xl font-bold md:w-3/4 mx-auto">The Most Creative Art School That Can Develop Your Talent</p>
+                                <h1 className="white text-4xl font-bold md:w-3/4 mx-auto">The Most Creative Art School That Can Develop Your Talent</h1>
                                 <button className="btn btn-primary mt-5">get started </button>
                             </div>
 

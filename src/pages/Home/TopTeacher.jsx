@@ -5,7 +5,9 @@ import axios from "axios";
 import TeacherCard from "../../components/TeacherCard";
 
 
+
 const TopTeacher = () => {
+
     const [teachers, setTeachers] = useState([])
     useEffect(() => {
         axios.get(`${import.meta.env.VITE_BASE_URL}/teachers?limit=6`)
