@@ -6,7 +6,8 @@
         "enroled": 50,
         "rating": 5,
         "price": 500,
-        "instructor": "Jhon Smith"
+        "teacher_name": "Jhon Smith",
+        "teacher_email": "man@gmail,com"
     },
     {
         "name": "Sketch Art",
@@ -15,7 +16,8 @@
         "enroled": 20,
         "rating": 5,
         "price": 100,
-        "instructor": "Jhon Smith"
+        "teacher_name": "Jhon Smith",
+        "teacher_email": "pagle@gmail,com"
     },
     {
         "name": "Sketch Art",
@@ -24,7 +26,8 @@
         "enroled": 5,
         "rating": 5,
         "price": 200,
-        "instructor": "Jhon Smith"
+        "teacher_name": "Jhon Smith",
+        "teacher_email": "patlu@gmail,com"
     },
     {
         "name": "Sketch Art",
@@ -33,7 +36,8 @@
         "enroled": 30,
         "rating": 5,
         "price": 50,
-        "instructor": "Jhon Smith"
+        "teacher_name": "Jhon Smith",
+        "teacher_email": "motu@gmail,com"
     },
     {
         "name": "Sketch Art",
@@ -42,7 +46,8 @@
         "enroled": 12,
         "rating": 5,
         "price": 700,
-        "instructor": "Jhon Smith"
+        "teacher_name": "Jhon Smith",
+        "teacher_email": "nabite@gmail,com"
     },
     {
         "name": "Sketch Art",
@@ -51,7 +56,8 @@
         "enroled": 2,
         "rating": 5,
         "price": 52,
-        "instructor": "Jhon Smith"
+        "teacher_name": "Jhon Smith",
+        "teacher_email": "smith@gmail,com"
     },
     {
         "name": "Sketch Art",
@@ -60,6 +66,7 @@
         "enroled": 13,
         "rating": 5,
         "price": 80,
-        "instructor": "Jhon Smith"
+        "teacher_name": "Jhon Smith",
+        "teacher_email": "jhon@gmail,com"
     }
 ]

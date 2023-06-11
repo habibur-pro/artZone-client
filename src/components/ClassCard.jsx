@@ -1,21 +1,24 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 
 const ClassCard = ({ singleClass }) => {
     const [axiosSecure] = useAxiosSecure()
-    const { user } = useAuth()
-    const { image, name, price, seats, instructor, enroled, _id } = singleClass || {}
-
+    const { user, userRole } = useAuth()
+    const navigate = useNavigate()
+    const { image, name, price, seats, teacher_name, enroled } = singleClass || {}
+    console.log('role from select card', userRole)
     const handleSelectClass = singleClass => {
+        const { image, name, price, teacher_email, _id } = singleClass || {}
         const selectItem = {
             name,
             image,
             price,
             clssId: _id,
             email: user?.email,
-            instructor,
+            teacher_email,
         }
         console.log(selectItem)
 
@@ -23,7 +26,18 @@ const ClassCard = ({ singleClass }) => {
         axiosSecure.post('/select_classes', {
             ...selectItem
         })
-            .then(res => console.log(res.data))
+            .then(res => {
+                if (res?.data?.insertedId) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Selection successfull ',
+                        showConfirmButton: false,
+                        timer: 1000
+                    })
+                    navigate('/dashboard/my_selected_class')
+                }
+            })
             .catch(error => console.log(error))
     }
     return (
@@ -33,7 +47,7 @@ const ClassCard = ({ singleClass }) => {
             <img src={image} alt="" />
             <div className="p-5 py-8">
                 <h3 className="text-3xl font-semibold text-center">{name}</h3>
-                <p className="text-md text-center">{instructor}</p>
+                <p className="text-md text-center">{teacher_name}</p>
                 <div className="flex justify-between my-3 w-3/4 mx-auto">
                     <div className="text-center ">
                         <p className="font-bold text-3xl text-warning">{enroled}</p>
@@ -46,7 +60,10 @@ const ClassCard = ({ singleClass }) => {
                 </div>
                 <p className="absolute top-5 right-5 bg-secondary px-4 py-1 text-white  font-bold bg-opacity-90" >${price}</p>
                 {
-                    user ? <button onClick={() => handleSelectClass(singleClass)} className="btn btn-secondary rounded-full w-full mt-5">Select</button> :
+                    user ? <button
+                        disabled={userRole === 'admin' || userRole === 'teacher' || seats < 1}
+                        onClick={() => handleSelectClass(singleClass)}
+                        className="btn btn-secondary rounded-full w-full mt-5">Select</button> :
                         <Link to='/login'> <button className="btn btn-secondary rounded-full w-full mt-5">Select</button></Link>
                 }
             </div>
