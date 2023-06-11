@@ -1,31 +1,32 @@
 import { Outlet } from "react-router";
-import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { useState } from "react";
 import Hamburger from "hamburger-react";
-
-import MyContainer from "../components/MyContainer";
 import SideMenu from "../components/SideMenu";
+import profileImage from '../assets/images/profile.jpg'
 
 
 
 const Dashboard = () => {
     const { user, userRole } = useAuth()
+
     const [open, setOpen] = useState(false)
     console.log('dashboard user', user)
     return (
         <>
             {/* left side  */}
             <div className="flex max-w-[1900px] mx-auto">
-                <div className={`${open ? 'left-0' : '-left-[100%]'} md:left-0 absolute md:relative  duration-300 h-screen bg-secondary w-60 md:w-80 z-10 md:mr-5 text-white`}>
-                    <div className="text-center border-b pb-3 border-slate-300">
+                <div className={`${open ? 'left-0' : '-left-[100%]'} md:left-0 absolute md:relative  duration-300 h-auto min-h-screen bg-secondary w-60 md:w-80 z-10 md:mr-5 text-white`}>
+                    <div className="text-center border-b border-dashed pb-3 border-slate-300">
                         <div>
                             {
-                                userRole && <img className="w-28 h-28 rounded-full mx-auto mt-10 shadow" src={user?.photoURL} alt="" />
+                                user && <img className="w-28 h-28 rounded-full mx-auto mt-10 shadow" src={user?.photoURL && user?.photoURL ? user?.photoURL : profileImage} alt="" />
                             }
                         </div>
                         <h3 className="text-2xl  font-bold mt-3">{user?.displayName}</h3>
-                        <h3 className="mt-3"><span className="bg-slate-500 px-3 rounded-full py-1 ">{userRole}</span></h3>
+                        {
+                            userRole && userRole === 'user' || <h3 className="mt-3"><span className="bg-slate-500 px-3 rounded-full py-1 ">{userRole}</span></h3>
+                        }
 
                     </div>
 

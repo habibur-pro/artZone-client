@@ -9,6 +9,12 @@ import Dashboard from "../layout/Dashboard";
 import PrivetRoute from "./PrivetRoute";
 import SelectedClass from "../pages/Dashboard/SelectedClass";
 import EnroledClass from "../pages/Dashboard/EnroledClass";
+import AddClass from "../pages/Dashboard/AddClass";
+import MyClasses from "../pages/Dashboard/MyClasses";
+import ManageUsers from "../pages/Dashboard/ManageUsers";
+import ManageClasses from "../pages/Dashboard/ManageClasses";
+import AdminRoute from "./AdminRoute";
+import TeacherRoute from "./TeacherRoute";
 
 const router = createBrowserRouter([
     {
@@ -41,6 +47,7 @@ const router = createBrowserRouter([
         path: 'dashboard',
         element: <PrivetRoute><Dashboard></Dashboard></PrivetRoute>,
         children: [
+            // user routes 
             {
                 path: 'my_selected_class',
                 element: <SelectedClass></SelectedClass>
@@ -48,6 +55,24 @@ const router = createBrowserRouter([
             {
                 path: 'my_enroled_class',
                 element: <EnroledClass></EnroledClass>
+            },
+            // teacher routes 
+            {
+                path: 'add_a_class',
+                element: <TeacherRoute><AddClass></AddClass></TeacherRoute>
+            },
+            {
+                path: 'my_classes',
+                element: <TeacherRoute><MyClasses></MyClasses></TeacherRoute>
+            },
+            // Admin routes 
+            {
+                path: 'manage_users',
+                element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
+            },
+            {
+                path: 'manage_classes',
+                element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>
             }
         ]
 

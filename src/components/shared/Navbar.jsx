@@ -46,7 +46,7 @@ const Navbar = () => {
 
     return (
         <div>
-            <div className='py-3 border-b bg-transparent fixed w-full  z-50 bg-white'>
+            <div className='py-3 border-b bg-transparent fixed top-0 w-full  z-50 bg-white'>
                 <MyContainer>
                     <div className='flex justify-between items-center '>
                         <h3 className='text-3xl font-bold'>Art<span>Zone</span></h3>

@@ -89,9 +89,11 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser)
             if (currentUser?.email) {
+                console.log('cureent user from auth provider', currentUser.email)
                 createToken(currentUser)
             }
             console.log('current user', currentUser)
+            localStorage.removeItem('access-token')
             setLoading(false)
         })
         return () => unsubscribe()

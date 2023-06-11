@@ -4,6 +4,7 @@ const baseUrl = import.meta.env.VITE_BASE_URL;
 
 // save user to db
 export const saveUser = async (user) => {
+    console.log('user from saved user', user)
     const res = await axios.put(`${baseUrl}/users`, {
         email: user?.email
     })
@@ -27,5 +28,5 @@ export const createToken = async (user) => {
 export const getRole = async (email) => {
     const res = await axios.get(`${baseUrl}/users/${email}`)
     const data = res.data;
-    return data?.role || ''
+    return data?.role || 'user'
 }
