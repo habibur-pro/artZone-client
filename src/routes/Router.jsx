@@ -15,6 +15,7 @@ import ManageUsers from "../pages/Dashboard/ManageUsers";
 import ManageClasses from "../pages/Dashboard/ManageClasses";
 import AdminRoute from "./AdminRoute";
 import TeacherRoute from "./TeacherRoute";
+import StudentRoute from "./StudentRoute";
 
 const router = createBrowserRouter([
     {
@@ -47,7 +48,7 @@ const router = createBrowserRouter([
         path: 'dashboard',
         element: <PrivetRoute><Dashboard></Dashboard></PrivetRoute>,
         children: [
-            // user routes 
+            // student routes 
             {
                 path: 'my_selected_class',
                 element: <SelectedClass></SelectedClass>

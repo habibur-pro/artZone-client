@@ -11,7 +11,7 @@ import profileImage from '../../assets/images/profile.jpg'
 
 const Navbar = () => {
     const [isOpen, setOpen] = useState(false)
-    const { user, logOut, userRole } = useAuth()
+    const { user, logOut, userRole, isLoading } = useAuth()
 
 
     const handleLogOut = () => {
@@ -37,12 +37,15 @@ const Navbar = () => {
                 }>Classes</NavLink>
             </ li>
             {
-                user && < li > <NavLink to={`${(userRole === 'student' && '/dashboard/my_selected_class') || (userRole === 'admin' && '/dashboard/manage_classes') || (userRole === 'teacher' && '/dashboard/my_classes')
-                    }`}
+                // todo dashboard link dynamic 
+                user && < li > <NavLink to='/dashboard'
                     className={({ isActive }) => isActive ? "text-red-400" : ""
                     }>Dashboard </NavLink>
                 </ li>
             }
+
+            {/* {`${(userRole === 'student' && '/dashboard/my_selected_class') || (userRole === 'admin' && '/dashboard/manage_classes') || (userRole === 'teacher' && '/dashboard/my_classes')
+                }`} */}
         </>
 
     return (
