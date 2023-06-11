@@ -1,40 +1,33 @@
+import { Link } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 
 const ClassCard = ({ singleClass }) => {
-    const { image, name, price, seats, rating, instructor, enroled } = singleClass || {}
+    const [axiosSecure] = useAxiosSecure()
+    const { user } = useAuth()
+    const { image, name, price, seats, instructor, enroled, _id } = singleClass || {}
+
+    const handleSelectClass = singleClass => {
+        const selectItem = {
+            name,
+            image,
+            price,
+            clssId: _id,
+            email: user?.email,
+            instructor,
+        }
+        console.log(selectItem)
+
+
+        axiosSecure.post('/select_classes', {
+            ...selectItem
+        })
+            .then(res => console.log(res.data))
+            .catch(error => console.log(error))
+    }
     return (
-        // <>
-        //     <div className="card">
-        //         <div className=" ">
-        //             <img src={image} alt="" />
-        //         </div>
 
-        //         <h2 className=" text-center text-3xl font-bold mt-5  px-8">{name}</h2>
-        //         <div className="title text-center text-gray-500 text-lg py-0 px-8">{instructor}</div>
-        //         <div className="actions">
-        //             <div className="follow-info px-0 py-1 flex">
-        //                 <div className="w-1/2 text-center">
-        //                     <div className="text-gray-500   flex flex-col text-center">
-        //                         <p className="text-blue-500 font-bold text-3xl">{enroled}</p>
-        //                         <p>Enroled</p>
-        //                     </div>
-        //                 </div>
-        //                 <h2 className="w-1/2 text-center">
-        //                     <p className="text-gray-500 hover:bg-gray-200 rounded-lg py-2 px-4">
-        //                         <span className="text-blue-500 font-bold">{seats}</span>
-        //                         <small>Available</small>
-        //                     </p>
-        //                 </h2>
-        //             </div>
-        //             <div className="follow-btn">
-        //                 <button className="text-base font-bold bg-yellow-300 w-full border-none py-4 px-8 outline-none rounded-3xl hover:bg-yellow-400 transform transition-all duration-200">Follow</button>
-        //             </div>
-        //         </div>
-        //         <div className="desc text-justify py-0 px-8">Morgan has collected ants since they were six years old and now has many dozen ants but none in their pants.</div>
-        //     </div>
-
-
-        // </>
         <div className="card border relative">
 
             <img src={image} alt="" />
@@ -52,7 +45,10 @@ const ClassCard = ({ singleClass }) => {
                     </div>
                 </div>
                 <p className="absolute top-5 right-5 bg-secondary px-4 py-1 text-white  font-bold bg-opacity-90" >${price}</p>
-                <button className="btn btn-secondary rounded-full w-full mt-5">Select</button>
+                {
+                    user ? <button onClick={() => handleSelectClass(singleClass)} className="btn btn-secondary rounded-full w-full mt-5">Select</button> :
+                        <Link to='/login'> <button className="btn btn-secondary rounded-full w-full mt-5">Select</button></Link>
+                }
             </div>
         </div>
     );
