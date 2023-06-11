@@ -37,7 +37,7 @@ const Navbar = () => {
                 }>Classes</NavLink>
             </ li>
             {
-                user && < li > <NavLink to={`${(userRole === 'user' && '/dashboard/my_selected_class') || (userRole === 'admin' && '/dashboard/manage_classes') || (userRole === 'teacher' && '/dashboard/my_classes')
+                user && < li > <NavLink to={`${(userRole === 'student' && '/dashboard/my_selected_class') || (userRole === 'admin' && '/dashboard/manage_classes') || (userRole === 'teacher' && '/dashboard/my_classes')
                     }`}
                     className={({ isActive }) => isActive ? "text-red-400" : ""
                     }>Dashboard </NavLink>

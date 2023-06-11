@@ -28,5 +28,5 @@ export const createToken = async (user) => {
 export const getRole = async (email) => {
     const res = await axios.get(`${baseUrl}/users/${email}`)
     const data = res.data;
-    return data?.role || 'user'
+    return data?.role || 'student'
 }

@@ -26,7 +26,7 @@ const SideMenu = () => {
         <div>
             <ul className='dashboard-links'>
                 {
-                    userRole === 'user' && <>
+                    userRole === 'student' && <>
                         <li className='mb-3'>
                             <NavLink to='/dashboard/my_selected_class'
                                 className={({ isActive }) => isActive ? 'dashboard_link_active' : 'dashboard_link_default'}
