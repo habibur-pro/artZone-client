@@ -17,7 +17,7 @@ export const saveUser = async (user) => {
 export const createToken = async (user) => {
     if (user.email) {
         const res = await axios.post(`${baseUrl}/jwt`, {
-            emai: user.email
+            email: user.email
         })
         const data = res?.data;
         localStorage.setItem('access-token', data?.token)

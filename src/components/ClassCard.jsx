@@ -50,7 +50,7 @@ const ClassCard = ({ singleClass }) => {
                 <p className="text-md text-center">{teacher_name}</p>
                 <div className="flex justify-between my-3 w-3/4 mx-auto">
                     <div className="text-center ">
-                        <p className="font-bold text-3xl text-warning">{enroled}</p>
+                        <p className="font-bold text-3xl text-warning">{enroled || 0}</p>
                         <p className="text-lg text-slate-500">Enroled</p>
                     </div>
                     <div className="text-center ">

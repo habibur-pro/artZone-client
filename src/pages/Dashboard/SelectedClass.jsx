@@ -1,7 +1,6 @@
-import { useEffect } from 'react';
+
 import useAuth from '../../hooks/useAuth'
 import { useQuery } from 'react-query';
-import axios from 'axios';
 import useAxiosSecure from '../../hooks/useAxiosSecure'
 import Spinner from '../../components/Spinner'
 import { AiOutlineDelete } from "react-icons/ai";

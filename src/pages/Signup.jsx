@@ -53,6 +53,7 @@ const Signup = () => {
         const formData = new FormData();
         formData.append('image', imageFile);
 
+
         const { name, email, confirmPassword } = data || {}
 
         // host photo 
