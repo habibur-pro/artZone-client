@@ -3,7 +3,7 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, si
 import app from "../firebase/firebase.config";
 
 import { createToken, getRole } from "../api/auth";
-import Spinner from '../components/Spinner'
+// import Spinner from '../components/Spinner'
 
 const auth = getAuth(app);
 
@@ -14,9 +14,9 @@ const AuthProvider = ({ children }) => {
     const [isLoading, setLoading] = useState(true)
     const [userRole, setUserRole] = useState('')
 
-    {
-        isLoading && <Spinner />
-    }
+    // {
+    //     isLoading && <Spinner />
+    // }
 
     // get user role 
     useEffect(() => {
