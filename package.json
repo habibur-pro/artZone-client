@@ -12,6 +12,8 @@
   "dependencies": {
     "@headlessui/react": "^1.7.15",
     "@ramonak/react-progress-bar": "^5.0.3",
+    "@stripe/react-stripe-js": "^2.1.0",
+    "@stripe/stripe-js": "^1.54.0",
     "axios": "^1.4.0",
     "dom": "^0.0.3",
     "firebase": "^9.22.1",

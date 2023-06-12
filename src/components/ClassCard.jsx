@@ -11,7 +11,7 @@ const ClassCard = ({ singleClass }) => {
     const { image, name, price, seats, teacher_name, enroled } = singleClass || {}
     console.log('role from select card', userRole)
     const handleSelectClass = singleClass => {
-        const { image, name, price, teacher_email, _id } = singleClass || {}
+        const { image, name, price, teacher_email, _id, seats } = singleClass || {}
         const selectItem = {
             name,
             image,
@@ -19,6 +19,7 @@ const ClassCard = ({ singleClass }) => {
             clssId: _id,
             email: user?.email,
             teacher_email,
+            seats,
             status: "unpaid",
         }
         console.log(selectItem)
