@@ -5,7 +5,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 
 const ManageStudents = () => {
-    const { user, logOut } = useAuth()
+    const { user } = useAuth()
     const [axiosSecure] = useAxiosSecure()
 
 
