@@ -11,11 +11,11 @@ import SelectedClass from "../pages/Dashboard/SelectedClass";
 import EnroledClass from "../pages/Dashboard/EnroledClass";
 import AddClass from "../pages/Dashboard/AddClass";
 import MyClasses from "../pages/Dashboard/MyClasses";
-import ManageUsers from "../pages/Dashboard/ManageUsers";
 import ManageClasses from "../pages/Dashboard/ManageClasses";
 import AdminRoute from "./AdminRoute";
 import TeacherRoute from "./TeacherRoute";
 import StudentRoute from "./StudentRoute";
+import ManageStudents from "../pages/Dashboard/ManageStudents";
 
 const router = createBrowserRouter([
     {
@@ -68,8 +68,8 @@ const router = createBrowserRouter([
             },
             // Admin routes 
             {
-                path: 'manage_users',
-                element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
+                path: 'manage_students',
+                element: <AdminRoute><ManageStudents></ManageStudents></AdminRoute>
             },
             {
                 path: 'manage_classes',

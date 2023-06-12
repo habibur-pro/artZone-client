@@ -86,10 +86,10 @@ const SideMenu = () => {
 
 
                         <li className='mb-3'>
-                            <NavLink to='/dashboard/manage_users'
+                            <NavLink to='/dashboard/manage_students'
                                 className={({ isActive }) => isActive ? 'dashboard_link_active' : 'dashboard_link_default'}
                             >
-                                <span className='text-lg'><FaUsersCog /></span> Manage Users
+                                <span className='text-lg'><FaUsersCog /></span> Manage Sudents
                             </NavLink>
                         </li>
 
