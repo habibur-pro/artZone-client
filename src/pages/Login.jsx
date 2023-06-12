@@ -1,7 +1,7 @@
 import MyContainer from "../components/MyContainer";
 import { MdOutlineAlternateEmail } from "react-icons/md";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import SocialLogin from "../components/SocialLogin";
@@ -11,10 +11,16 @@ import Swal from "sweetalert2";
 
 
 const Login = () => {
+    const loacation = useLocation()
+    const navigate = useNavigate()
     const { logInWithEmailPassword } = useAuth()
     const [loginLoading, setLoginLoading] = useState(false)
     const [show, setShow] = useState(false)
     const [loginError, setLoginError] = useState('')
+
+    const from = loacation?.state?.from?.pathname || '/'
+
+
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         console.log(data.email, data.password)
@@ -31,6 +37,7 @@ const Login = () => {
                     showConfirmButton: false,
                     timer: 1000
                 })
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 setLoginLoading(false)
@@ -97,7 +104,7 @@ const Login = () => {
                         <div className="divider">Or</div>
 
                         {
-                            <SocialLogin />
+                            <SocialLogin from={from} />
                         }
 
                         <p className="text-center">Have no Account

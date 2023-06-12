@@ -4,7 +4,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible, AiOutlinePhone } from "react-icons
 import { ImSpinner10 } from "react-icons/im";
 import { BiUser } from "react-icons/bi";
 import { MdPhotoCamera } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../hooks/useAuth";
@@ -23,7 +23,7 @@ const Signup = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { registerWithEmailPassword, updateUserProfile } = useAuth()
     const [registerLoading, setRegisterLoading] = useState(false)
-
+    const navigate = useNavigate()
 
 
 
@@ -89,6 +89,7 @@ const Signup = () => {
                                             showConfirmButton: false,
                                             timer: 1000
                                         })
+                                        navigate('/')
                                     })
                                     .catch(error => {
                                         setRegisterError(error?.message)

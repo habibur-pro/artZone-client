@@ -4,10 +4,12 @@ import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
 import { saveUser } from "../api/auth";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router";
 
-const SocialLogin = () => {
+const SocialLogin = ({ from = '/' }) => {
     const { loginWithGoogle } = useAuth()
     const [googleLoading, setGoogleLoading] = useState(false)
+    const navigate = useNavigate()
 
     const handleGoogleLogin = () => {
         setGoogleLoading(true)
@@ -24,6 +26,7 @@ const SocialLogin = () => {
                             timer: 1000
                         })
                         setGoogleLoading(false)
+                        navigate(from, { replace: true })
                     })
                     .catch(error => {
                         console.log(error)
