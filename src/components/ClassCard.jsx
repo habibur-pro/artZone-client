@@ -19,6 +19,7 @@ const ClassCard = ({ singleClass }) => {
             clssId: _id,
             email: user?.email,
             teacher_email,
+            status: "unpaid",
         }
         console.log(selectItem)
 

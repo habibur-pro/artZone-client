@@ -3,8 +3,6 @@ import useAuth from '../../hooks/useAuth'
 import { useQuery } from 'react-query';
 import useAxiosSecure from '../../hooks/useAxiosSecure'
 import Spinner from '../../components/Spinner'
-import { AiOutlineDelete } from "react-icons/ai";
-import { MdOutlinePayment } from "react-icons/md";
 import Swal from 'sweetalert2';
 
 const SelectedClass = () => {
@@ -38,7 +36,7 @@ const SelectedClass = () => {
                             Swal.fire({
                                 position: 'center',
                                 icon: 'success',
-                                title: 'Your work has been saved',
+                                title: 'Your items is deleted',
                                 showConfirmButton: false,
                                 timer: 1500
                             })
@@ -55,20 +53,26 @@ const SelectedClass = () => {
     console.log('user from selected clss', user)
     return (
         <>
-            {dataLoading ? <Spinner></Spinner>
-                :
+            {dataLoading ? <Spinner></Spinner> :
                 <div>
                     <div className="overflow-x-auto">
-                        <table className="table font-">
+
+                        <table className="table ">
                             {/* head */}
                             <thead>
-                                <tr className='font-bold  border-5 border-secondary border-b'>
+                                <tr className="border-spacing-3 border-secondary border-b">
 
-                                    <th className='font-bold text-md text-secondary'>image</th>
-                                    <th className='font-bold text-md text-secondary'>ClassName</th>
-                                    <th className='font-bold text-md text-secondary'>Teacher</th>
-                                    <th className='font-bold text-md text-secondary'>Price</th>
-                                    <th className='font-bold text-md text-secondary'>Actions</th>
+
+                                    <th className="text-base">Image</th>
+                                    <th className="text-base">Class Name</th>
+                                    <th className="text-base">Teacher Name</th>
+                                    <th className="text-base">Teacher Email</th>
+                                    <th className="text-base">Available Seats</th>
+                                    <th className="text-base">Price</th>
+                                    <th className="text-base">Status</th>
+                                    <th className="text-base">Actions</th>
+
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -86,13 +90,22 @@ const SelectedClass = () => {
                                         </td>
                                         <td>{singleClass?.name}</td>
                                         <td>{singleClass?.teacher_name}</td>
+                                        <td>{singleClass?.teacher_email}</td>
+                                        <td>{singleClass?.seats}</td>
                                         <td className='font-bold'>${singleClass?.price}</td>
+
+                                        <td className='font-bold'>{singleClass?.status}</td>
+
                                         <th className='space-x-3'>
-                                            <button onClick={() => handleDelete(singleClass?._id)} className="btn btn-primary text-lg btn-sm  text-white">
-                                                <AiOutlineDelete />
+                                            <button
+
+                                                onClick={() => handleDelete(singleClass?._id)} className="btn btn-primary btn-sm">
+                                                Delte
                                             </button>
-                                            <button className="btn btn-accent text-lg btn-sm  text-white">
-                                                <MdOutlinePayment />
+                                            <button
+
+                                                className="btn btn-accent btn-sm">
+                                                Pay
                                             </button>
 
                                         </th>
