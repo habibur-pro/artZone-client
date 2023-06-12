@@ -11,7 +11,7 @@ import profileImage from '../../assets/images/profile.jpg'
 
 const Navbar = () => {
     const [isOpen, setOpen] = useState(true)
-    const { user, logOut, userRole, isLoading } = useAuth()
+    const { user, logOut } = useAuth()
 
     console.log('menu', isOpen)
     const handleLogOut = () => {

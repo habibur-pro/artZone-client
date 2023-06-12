@@ -1,11 +1,10 @@
 
-import useAuth from "../../hooks/useAuth";
+
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useGetTeacherClass from "../../hooks/useGetTeacherClass";
 
 
 const ManageClasses = () => {
-    const { user, isLoading } = useAuth()
     const [axiosSecure] = useAxiosSecure()
     const { data: classes, refetch } = useGetTeacherClass('classes')
     console.log('all classs', classes)

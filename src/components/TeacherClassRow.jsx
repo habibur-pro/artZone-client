@@ -1,16 +1,13 @@
+import { Link } from "react-router-dom";
 
 
 
 
-const TeacherClassRow = ({ singleClass, refetch, setUpdateClass }) => {
+const TeacherClassRow = ({ singleClass, refetch }) => {
 
 
     const { name, image, seats, price, status, enroled, _id } = singleClass || {}
-    const handleModal = (singleClass) => {
-        const modal = window.my_modal_1
-        modal.showModal()
-        setUpdateClass(singleClass)
-    }
+
     return (
 
         <tr className="">
@@ -27,7 +24,9 @@ const TeacherClassRow = ({ singleClass, refetch, setUpdateClass }) => {
             <td>{status}</td>
             <td>{enroled}</td>
             <td>
-                <button onClick={() => handleModal(singleClass)} className='btn btn-xs btn-secondary'>Update</button>
+                <Link to={`/dashboard/update/${_id}`}>
+                    <button className='btn btn-xs btn-secondary'>Update</button>
+                </Link>
 
             </td>
 

@@ -2,8 +2,6 @@ import { useQuery } from "react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
 import TeacherClassRow from "../../components/TeacherClassRow";
-import UpDateModal from "../../components/UpDateModal";
-import { useState } from "react";
 
 
 
@@ -15,7 +13,7 @@ const MyClasses = () => {
 
     const { user, isLoading } = useAuth()
     const [axiosSecure] = useAxiosSecure()
-    const [updateClass, setUpdateClass] = useState({})
+
 
 
 
@@ -55,7 +53,7 @@ const MyClasses = () => {
                                     key={singleClass._id}
                                     singleClass={singleClass}
                                     refetch={refetch}
-                                    setUpdateClass={setUpdateClass}
+
 
                                 ></TeacherClassRow>)
                             }
@@ -64,7 +62,7 @@ const MyClasses = () => {
 
 
                     </table>
-                    <UpDateModal updateClass={updateClass}></UpDateModal>
+
 
                 </div>
             </div>

@@ -3,57 +3,65 @@ import useAuth from '../../hooks/useAuth'
 import { useForm } from "react-hook-form";
 import useAxiosSecure from '../../hooks/useAxiosSecure'
 import Swal from 'sweetalert2';
+import { useParams } from 'react-router';
+import { useQuery } from 'react-query';
 
 
 
-const AddClass = () => {
+const UpdateMyClass = () => {
     const { user } = useAuth()
     const [axiosSecure] = useAxiosSecure()
-    const imageHostKey = import.meta.env.VITE_IMAGE_UPLOAD_KEY
-    const imageHostingUrl = `https://api.imgbb.com/1/upload?key=${imageHostKey}`
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { id } = useParams()
+    console.log('id', id)
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const formData = new FormData();
+    const { data: singleClass = [] } = useQuery({
+        queryKey: ['class', id],
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/myClasses/${id}`)
+            const data = res.data;
+            console.log('update', data)
+            return data
+        }
+    })
+
+
+
+
+
     const onSubmit = data => {
-        const imageFile = data.image[0]
-        formData.append('image', imageFile);
-        fetch(imageHostingUrl, {
-            method: 'POST',
-            body: formData
-        })
-            .then(res => res.json())
-            .then(image => {
-                console.log('image', image.data)
+        console.log("for Upadte", data)
 
-                axiosSecure.post('/add_class', {
-                    name: data.name,
-                    image: image?.data?.display_url,
-                    teacher_name: data.teacher_name,
-                    teacher_email: data.teacher_email,
-                    seats: parseInt(data.seats),
-                    price: parseFloat(data.price),
-                    enroled: 0,
-                    status: 'pending'
-                })
-                    .then(res => {
-                        if (res?.data?.insertedId) {
-                            Swal.fire({
-                                position: 'center',
-                                icon: 'success',
-                                title: 'Added  Successfull ',
-                                showConfirmButton: false,
-                                timer: 1000
-                            })
-                        }
+        axiosSecure.put(`/classes/${id}`, {
+            name: data.name,
+            image: data?.image,
+            teacher_name: data.teacher_name,
+            teacher_email: data.teacher_email,
+            seats: parseInt(data.seats),
+            price: parseFloat(data.price),
+            enroled: 0,
+            status: 'pending'
+        })
+            .then(res => {
+
+                if (res?.data?.acknowledged) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Update  Successfull ',
+                        showConfirmButton: false,
+                        timer: 1000
                     })
-            }
-            )
+                    reset()
+                }
+            })
+
     };
 
 
     return (
         <div>
-            <h3>Add Class</h3>
+            <h3 className='text-center text-2xl font-bold mb-5'>Update Class</h3>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="mb-3">
                     {/* class name  */}
@@ -61,10 +69,11 @@ const AddClass = () => {
                         className="w-full rounded-lg border-gray-200 p-3 text-sm"
                         placeholder="Class Name"
                         type="text"
-                        {...register("name", { required: 'Class Name is requred' })}
+                        value={singleClass?.name}
+
 
                     />
-                    {errors.name && <p className="text-sm text-red-500">{errors.name?.message}</p>}
+
 
                     {/* image  */}
                 </div>
@@ -72,10 +81,12 @@ const AddClass = () => {
                     <input
                         className="w-full rounded-lg border-gray-200 p-3 text-sm"
                         placeholder="Name"
-                        type="file"
-                        {...register("image", { required: "Image is required" })}
+                        type="textt"
+                        value={singleClass?.image}
+                        readOnly
+
                     />
-                    {errors.image && <p className="text-sm text-red-500">{errors.image?.message}</p>}
+
                     {/* teacher Name  */}
                 </div>
                 <div className="mb-3">
@@ -127,4 +138,4 @@ const AddClass = () => {
     );
 };
 
-export default AddClass;
+export default UpdateMyClass;

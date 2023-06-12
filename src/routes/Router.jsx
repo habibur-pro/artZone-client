@@ -16,6 +16,7 @@ import AdminRoute from "./AdminRoute";
 import TeacherRoute from "./TeacherRoute";
 import StudentRoute from "./StudentRoute";
 import ManageStudents from "../pages/Dashboard/ManageStudents";
+import UpdateMyClass from "../pages/Dashboard/UpdateMyClass";
 
 const router = createBrowserRouter([
     {
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
             {
                 path: 'my_classes',
                 element: <TeacherRoute><MyClasses></MyClasses></TeacherRoute>
+            },
+            {
+                path: 'update/:id',
+                element: <UpdateMyClass></UpdateMyClass>
             },
             // Admin routes 
             {
