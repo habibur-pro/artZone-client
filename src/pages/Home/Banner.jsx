@@ -6,7 +6,7 @@ import MyContainer from "../../components/MyContainer";
 
 const Banner = () => {
     return (
-        <div className="pt-16">
+        <div className="md:pt-8">
             <Carousel
                 showThumbs={false}
                 autoPlay={true}
@@ -14,8 +14,8 @@ const Banner = () => {
                 showStatus={false}
             >
                 {/* slide 1  */}
-                <div className="relative max-h-[calc(100vh-50px) ]">
-                    <img src={slide} className="h-100" />
+                <div className="relative max-h-[calc(100vh-50px) ] ">
+                    <img src={slide} className=" max-h-[calc(100vh-50px)]" />
                     <MyContainer>
                         <div className="text-white   absolute top-0 left-0 w-full bg-secondary h-full bg-opacity-80 flex justify-center items-center">
 

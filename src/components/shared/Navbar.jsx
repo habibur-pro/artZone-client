@@ -10,10 +10,10 @@ import profileImage from '../../assets/images/profile.jpg'
 
 
 const Navbar = () => {
-    const [isOpen, setOpen] = useState(false)
+    const [isOpen, setOpen] = useState(true)
     const { user, logOut, userRole, isLoading } = useAuth()
 
-
+    console.log('menu', isOpen)
     const handleLogOut = () => {
         logOut()
             .then(() => {
@@ -50,7 +50,7 @@ const Navbar = () => {
 
     return (
         <div>
-            <div className='py-3 border-b bg-transparent fixed top-0 w-full  z-50 bg-white'>
+            <div className='py-3 border-b bg-transparent fixed  top-0 w-full  z-50 bg-white'>
                 <MyContainer>
                     <div className='flex justify-between items-center '>
                         <h3 className='text-3xl font-bold'>Art<span>Zone</span></h3>
@@ -85,7 +85,7 @@ const Navbar = () => {
                 </MyContainer>
             </div>
             {/* mobile rensponsive  */}
-            <ul className={`${isOpen ? ' top-0 fixed ' : ' -top-[100%]'} left-0 top-[60px] origin-top duration-300 md:hidden  absolute  bg-secondary  text-white w-full pl-5 space-y-3 py-5 mt-3 z-40`}>
+            <ul className={`${isOpen ? '-top-[100%]' : 'top-[60px]'} left-0 origin-top duration-300 md:hidden absolute bg-secondary text-white w-full pl-5 space-y-3 py-5 mt-3 z-40`}>
 
                 {navLinks}
                 {/* profile image  */}
