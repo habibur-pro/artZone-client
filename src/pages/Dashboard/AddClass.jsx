@@ -1,4 +1,4 @@
-import axios from 'axios';
+
 import useAuth from '../../hooks/useAuth'
 import { useForm } from "react-hook-form";
 import useAxiosSecure from '../../hooks/useAxiosSecure'
@@ -12,7 +12,7 @@ const AddClass = () => {
     const imageHostKey = import.meta.env.VITE_IMAGE_UPLOAD_KEY
     const imageHostingUrl = `https://api.imgbb.com/1/upload?key=${imageHostKey}`
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const formData = new FormData();
     const onSubmit = data => {
         const imageFile = data.image[0]
@@ -29,7 +29,9 @@ const AddClass = () => {
                     teacher_name: data.teacher_name,
                     teacher_email: data.teacher_email,
                     seats: parseInt(data.seats),
-                    price: parseFloat(data.price)
+                    price: parseFloat(data.price),
+                    enroled: 0,
+                    status: 'pending'
                 })
                     .then(res => {
                         if (res?.data?.insertedId) {
