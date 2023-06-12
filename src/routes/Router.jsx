@@ -18,6 +18,7 @@ import StudentRoute from "./StudentRoute";
 import ManageStudents from "../pages/Dashboard/ManageStudents";
 import UpdateMyClass from "../pages/Dashboard/UpdateMyClass";
 import Feadback from "../pages/Dashboard/Feadback";
+import Payment from "../pages/Dashboard/Payment";
 
 const router = createBrowserRouter([
     {
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
             {
                 path: 'update/:id',
                 element: <UpdateMyClass></UpdateMyClass>
+            },
+            {
+                path: 'payment/:id',
+                element: <Payment></Payment>
             },
             // Admin routes 
             {

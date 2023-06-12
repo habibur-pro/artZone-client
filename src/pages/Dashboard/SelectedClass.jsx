@@ -4,6 +4,7 @@ import { useQuery } from 'react-query';
 import useAxiosSecure from '../../hooks/useAxiosSecure'
 import Spinner from '../../components/Spinner'
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 const SelectedClass = () => {
     const { user, isLoading } = useAuth()
@@ -102,11 +103,11 @@ const SelectedClass = () => {
                                                 onClick={() => handleDelete(singleClass?._id)} className="btn btn-primary btn-sm">
                                                 Delte
                                             </button>
-                                            <button
-
-                                                className="btn btn-accent btn-sm">
-                                                Pay
-                                            </button>
+                                            <Link to={`/dashboard/payment/${singleClass?._id}`}>
+                                                <button
+                                                    className="btn btn-accent btn-sm">
+                                                    Pay
+                                                </button></Link>
 
                                         </th>
                                     </tr>)
