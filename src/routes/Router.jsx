@@ -17,6 +17,7 @@ import TeacherRoute from "./TeacherRoute";
 import StudentRoute from "./StudentRoute";
 import ManageStudents from "../pages/Dashboard/ManageStudents";
 import UpdateMyClass from "../pages/Dashboard/UpdateMyClass";
+import Feadback from "../pages/Dashboard/Feadback";
 
 const router = createBrowserRouter([
     {
@@ -79,6 +80,10 @@ const router = createBrowserRouter([
             {
                 path: 'manage_classes',
                 element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>
+            },
+            {
+                path: 'feadback/:id',
+                element: <Feadback></Feadback>
             }
         ]
 

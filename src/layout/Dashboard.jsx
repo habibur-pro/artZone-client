@@ -24,6 +24,7 @@ const Dashboard = () => {
                             }
                         </div>
                         <h3 className="text-2xl  font-bold mt-3">{user?.displayName}</h3>
+                        <p className=" mt-3">{user?.email}</p>
                         {
                             userRole && userRole === 'student' || <h3 className="mt-3"><span className="bg-slate-500 px-3 rounded-full py-1 ">{userRole}</span></h3>
                         }

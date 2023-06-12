@@ -52,7 +52,7 @@ const TeacherClassRow = ({ singleClass, refetch }) => {
             </td>
             <td>{name}</td>
             <td>{seats}</td>
-            <td>{price}</td>
+            <td className="text-end">${price}</td>
             <td>{status}</td>
             <td>{enroled}</td>
             <td>

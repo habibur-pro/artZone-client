@@ -1,5 +1,6 @@
 
 
+import { Link } from "react-router-dom";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useGetTeacherClass from "../../hooks/useGetTeacherClass";
 
@@ -77,9 +78,11 @@ const ManageClasses = () => {
                                 </button>
                             </td>
                             <td>
-                                <button
-                                    className="btn btn-accent btn-xs">Feadback
-                                </button>
+                                <Link to={`/dashboard/feadback/${singlClass._id}`}>
+                                    <button
+                                        className="btn btn-accent btn-xs">Feadback
+                                    </button>
+                                </Link>
                             </td>
 
 
