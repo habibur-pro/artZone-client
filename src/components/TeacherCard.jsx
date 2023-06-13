@@ -13,7 +13,7 @@ const TeacherCard = ({ teacher }) => {
                     <h3 className="text-3xl  font-bold">{name}</h3>
                     {/* todo: teacher title will be dynamic  */}
                     <h4 className="text-lg mt-0 mb-3">Teacher Title</h4>
-                    <p className=" ">Students: {students}</p>
+                    <p className=" ">Students: {students || 0}</p>
                     <div className='flex items-center justify-center gap-3 mt-3'>
                         <span className=' p-1 bg-primary text-white text-lg hover:scale-110'><AiOutlineMail /></span>
                         <span className=' p-1 bg-primary text-white text-lg hover:scale-110'><FaLinkedinIn /></span>

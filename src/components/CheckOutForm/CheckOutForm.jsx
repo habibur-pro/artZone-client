@@ -87,6 +87,7 @@ const CheckOutForm = ({ bookingData }) => {
             //update enroled count
             // delete selected items
             // save to enloled class
+            //  update teacher student count
             const paymentInfo = {
                 payment_history: {
                     amount: paymentIntent?.amount / 100,

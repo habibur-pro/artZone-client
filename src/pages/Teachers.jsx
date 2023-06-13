@@ -10,7 +10,7 @@ const Teachers = () => {
     const { data: allTeacher, isLoading } = useGetTeacherClass('teachers')
 
 
-    console.log('teacher data', Array.isArray(allTeacher))
+
     return (
         <div>
             {
