@@ -96,10 +96,11 @@ const CheckOutForm = ({ bookingData }) => {
                 },
 
                 enroled_info: {
+                    email: user?.email,
                     image: bookingData?.image,
                     classId: bookingData?.classId,
                     className: bookingData?.name,
-                    prie: bookingData?.price,
+                    price: bookingData?.price,
                     teacher_email: bookingData?.teacher_email,
                     teacher_name: bookingData?.teacher_name,
                     enroled_date: new Date(),
