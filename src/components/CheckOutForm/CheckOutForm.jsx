@@ -1,9 +1,8 @@
-import { CardElement, Elements, useElements, useStripe } from '@stripe/react-stripe-js';
+import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import './CheckOutForm.css'
 import useAuth from '../../hooks/useAuth';
 import { useEffect, useState } from 'react';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
-import app from '../../firebase/firebase.config';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router';
 const CheckOutForm = ({ bookingData }) => {
@@ -109,7 +108,7 @@ const CheckOutForm = ({ bookingData }) => {
                 update_class: {
                     classId: bookingData?.classId,
                     seats: bookingData?.seats - 1,
-                    enroled: bookingData?.enroled - 1,
+                    enroled: bookingData?.enroled + 1,
                 },
                 selectedId: bookingData?._id,
             }
