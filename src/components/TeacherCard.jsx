@@ -4,7 +4,7 @@ import { FaLinkedinIn } from 'react-icons/fa';
 
 
 const TeacherCard = ({ teacher }) => {
-    const { name, photo, students } = teacher || {}
+    const { name, photo, students, email } = teacher || {}
     return (
         <div className="h-[400px] relative overflow-hidden group">
             <img src={photo} className="h-full" alt="" />
@@ -12,7 +12,7 @@ const TeacherCard = ({ teacher }) => {
                 <div className="translate-y-[220px] text-white text-center ">
                     <h3 className="text-3xl  font-bold">{name}</h3>
                     {/* todo: teacher title will be dynamic  */}
-                    <h4 className="text-lg mt-0 mb-3">Teacher Title</h4>
+                    <h4 className="text-lg mt-0 mb-1">{email}</h4>
                     <p className=" ">Students: {students || 0}</p>
                     <div className='flex items-center justify-center gap-3 mt-3'>
                         <span className=' p-1 bg-primary text-white text-lg hover:scale-110'><AiOutlineMail /></span>
