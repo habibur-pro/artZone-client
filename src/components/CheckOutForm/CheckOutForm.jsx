@@ -4,10 +4,13 @@ import useAuth from '../../hooks/useAuth';
 import { useEffect, useState } from 'react';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import app from '../../firebase/firebase.config';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router';
 const CheckOutForm = ({ bookingData }) => {
     const stripe = useStripe();
     const elements = useElements();
     const { user } = useAuth()
+    const naviage = useNavigate()
     const [clientSecret, setClientSecret] = useState('')
     const [axiosSecure] = useAxiosSecure()
     const [paymentError, setPaymentError] = useState('')
@@ -81,24 +84,54 @@ const CheckOutForm = ({ bookingData }) => {
         }
         if (paymentIntent.status === 'succeeded') {
             // save payment history 
+            // update seats,
+            //update enroled count
+            // delete selected items
+            // save to enloled class
             const paymentInfo = {
-                amount: paymentIntent?.amount / 100,
-                trancustionId: paymentIntent?.id,
-                email: user?.email,
-                time: new Date()
+                payment_history: {
+                    amount: paymentIntent?.amount / 100,
+                    trancustionId: paymentIntent?.id,
+                    email: user?.email,
+                    time: new Date()
+                },
+
+                enroled_info: {
+                    image: bookingData?.image,
+                    classId: bookingData?.classId,
+                    className: bookingData?.name,
+                    prie: bookingData?.price,
+                    teacher_email: bookingData?.teacher_email,
+                    teacher_name: bookingData?.teacher_name,
+                    enroled_date: new Date(),
+                    status: 'paid'
+                },
+                update_class: {
+                    classId: bookingData?.classId,
+                    seats: bookingData?.seats - 1,
+                    enroled: bookingData?.enroled - 1,
+                },
+                selectedId: bookingData?._id,
             }
-            axiosSecure.post('/payment_history', {
+            axiosSecure.post('/payment', {
                 ...paymentInfo
-            }).then(res => console.log('payment history status', res.data))
+            }).then(res => {
+                if (res?.data?.deletedCount) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Enrole Successful',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    naviage('/dashboard/my_enroled_class')
+                }
+            })
+                .catch(error => setPaymentError(error.message))
 
             // update available seat 
             // console.log('minus', bookingData.seats - 1)
-            const updatedSeat = bookingData.seats - 1;
-            axiosSecure.patch(`/classes/${bookingData?._id}`, {
-                seats: updatedSeat
-            })
-                .then(res => console.log('update seats', res.data))
-                .catch(error => console.log('patch error', error))
+
         }
 
     };
