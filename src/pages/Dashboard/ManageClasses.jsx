@@ -18,6 +18,7 @@ const ManageClasses = () => {
                 console.log('status updated', res.data)
                 if (res.data.acknowledged) {
                     refetch()
+
                 }
             })
     }
@@ -78,7 +79,9 @@ const ManageClasses = () => {
                                 </button>
                             </td>
                             <td>
-                                <Link to={`/dashboard/feadback/${singlClass._id}`}>
+                                <Link className={`${(singlClass?.status !== 'denied') && 'hidden'
+                                    }`}
+                                    to={`/dashboard/feadback/${singlClass._id}`}>
                                     <button
                                         className="btn btn-accent btn-xs">Feadback
                                     </button>

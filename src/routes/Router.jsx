@@ -19,6 +19,7 @@ import ManageStudents from "../pages/Dashboard/ManageStudents";
 import UpdateMyClass from "../pages/Dashboard/UpdateMyClass";
 import Feadback from "../pages/Dashboard/Feadback";
 import Payment from "../pages/Dashboard/Payment";
+import PaymentHistory from "../pages/Dashboard/PaymentHistory";
 
 const router = createBrowserRouter([
     {
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
             {
                 path: 'my_enroled_class',
                 element: <EnroledClass></EnroledClass>
+            },
+            {
+                path: 'payment_history',
+                element: <PaymentHistory></PaymentHistory>
             },
             // teacher routes 
             {

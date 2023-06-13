@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 
 const TeacherClassRow = ({ singleClass, refetch }) => {
     const [axiosSecure] = useAxiosSecure()
-    const { name, image, seats, price, status, enroled, _id } = singleClass || {}
+    const { name, image, seats, price, status, enroled, _id, feadback } = singleClass || {}
 
     const handleDelete = id => {
         Swal.fire({
@@ -54,10 +54,13 @@ const TeacherClassRow = ({ singleClass, refetch }) => {
             <td>{seats}</td>
             <td className="text-end">${price}</td>
             <td>{status}</td>
+            <td className="underline cursor-pointer" title={feadback}>{feadback ? 'Feadback' : ''}</td>
             <td>{enroled}</td>
             <td>
-                <Link to={`/dashboard/update/${_id}`}>
-                    <button className='btn btn-xs btn-secondary'>Update</button>
+                <Link className={`${status === 'denied' && 'hidden'}`} to={`/dashboard/update/${_id}`}>
+                    <button
+
+                        className='btn btn-xs btn-secondary'>Update</button>
                 </Link>
 
             </td>

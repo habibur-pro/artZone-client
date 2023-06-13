@@ -29,7 +29,7 @@ const MyClasses = () => {
     })
     return (
         <div>
-            <h3>My Classes</h3>
+
             <div>
                 <div className="overflow-x-auto">
                     <table className="table">
@@ -42,8 +42,10 @@ const MyClasses = () => {
                                 <th className="text-base">Available Seets</th>
                                 <th className="text-base">Price</th>
                                 <th className="text-base">Status</th>
+                                <th className="text-base">Feadback</th>
                                 <th className="text-base">Enroled</th>
                                 <th className="text-base">Actions</th>
+
 
                             </tr>
                         </thead>

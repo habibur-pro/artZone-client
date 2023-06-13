@@ -3,6 +3,8 @@ import { FiShoppingCart } from 'react-icons/fi';
 import { BsBuildingGear, BsCartCheck } from 'react-icons/bs';
 import { SiGoogleclassroom } from 'react-icons/si';
 import { FaUsersCog } from "react-icons/fa";
+
+import { BsWallet2 } from "react-icons/bs";
 import { MdOutlineLibraryBooks, MdOutlinePostAdd } from 'react-icons/md';
 import { AiOutlineHome } from 'react-icons/ai';
 import { GiTeacher } from 'react-icons/gi';
@@ -41,6 +43,14 @@ const SideMenu = () => {
                                 className={({ isActive }) => isActive ? 'dashboard_link_active' : 'dashboard_link_default'}
                             >
                                 <span className='text-lg'><BsCartCheck /></span> Enroled Classes
+                            </NavLink>
+                        </li>
+
+                        <li className='mb-3'>
+                            <NavLink to='/dashboard/payment_history'
+                                className={({ isActive }) => isActive ? 'dashboard_link_active' : 'dashboard_link_default'}
+                            >
+                                <span className='text-lg'><BsWallet2 /></span> Payment History
                             </NavLink>
                         </li>
 

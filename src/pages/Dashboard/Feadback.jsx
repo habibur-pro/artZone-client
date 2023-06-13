@@ -1,10 +1,11 @@
 
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 
 
 const Feadback = () => {
+    const navigate = useNavigate()
     const { id } = useParams()
     const [axiosSecure] = useAxiosSecure()
     const handleFeadback = (event) => {
@@ -24,6 +25,7 @@ const Feadback = () => {
                         showConfirmButton: false,
                         timer: 1000
                     })
+                    navigate('/dashboard/manage_classes')
                 }
             })
     }

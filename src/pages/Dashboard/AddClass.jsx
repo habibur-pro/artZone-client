@@ -12,7 +12,7 @@ const AddClass = () => {
     const imageHostKey = import.meta.env.VITE_IMAGE_UPLOAD_KEY
     const imageHostingUrl = `https://api.imgbb.com/1/upload?key=${imageHostKey}`
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const formData = new FormData();
     const onSubmit = data => {
         const imageFile = data.image[0]
@@ -44,6 +44,7 @@ const AddClass = () => {
                                 showConfirmButton: false,
                                 timer: 1000
                             })
+                            reset()
                         }
                     })
             }
