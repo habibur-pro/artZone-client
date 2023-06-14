@@ -21,6 +21,7 @@ import Feadback from "../pages/Dashboard/Feadback";
 import Payment from "../pages/Dashboard/Payment";
 import PaymentHistory from "../pages/Dashboard/PaymentHistory";
 
+
 const router = createBrowserRouter([
     {
         path: '/',
@@ -55,15 +56,20 @@ const router = createBrowserRouter([
             // student routes 
             {
                 path: 'my_selected_class',
-                element: <SelectedClass></SelectedClass>
+                element: <StudentRoute><SelectedClass></SelectedClass></StudentRoute>
             },
             {
                 path: 'my_enroled_class',
-                element: <EnroledClass></EnroledClass>
+                element: <StudentRoute><EnroledClass></EnroledClass></StudentRoute>
+            },
+            {
+                path: 'payment/:id',
+                element: <StudentRoute><Payment></Payment></StudentRoute>
+
             },
             {
                 path: 'payment_history',
-                element: <PaymentHistory></PaymentHistory>
+                element: <StudentRoute><PaymentHistory></PaymentHistory></StudentRoute>
             },
             // teacher routes 
             {
@@ -76,12 +82,9 @@ const router = createBrowserRouter([
             },
             {
                 path: 'update/:id',
-                element: <UpdateMyClass></UpdateMyClass>
+                element: <TeacherRoute><UpdateMyClass></UpdateMyClass></TeacherRoute>
             },
-            {
-                path: 'payment/:id',
-                element: <Payment></Payment>
-            },
+
             // Admin routes 
             {
                 path: 'manage_students',

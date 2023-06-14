@@ -10,7 +10,7 @@ const ManageStudents = () => {
 
 
     const { data: users = [], refetch } = useQuery({
-        queryKey: ['users'],
+        queryKey: ['users', user?.email],
         queryFn: async () => {
             const res = await axiosSecure.get(`/users`)
             const data = res.data;

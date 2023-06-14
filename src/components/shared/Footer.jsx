@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 import MyContainer from "../MyContainer";
 
 
+
 const Footer = () => {
+
     return (
         <div className="bg-secondary text-white ">
             <MyContainer>
