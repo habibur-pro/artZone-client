@@ -114,7 +114,7 @@ const Signup = () => {
 
 
     return (
-        <div className="flex  justify-center items-center mt-5">
+        <div className="flex h-screen justify-center items-center mt-16">
             <>
                 <div className="">
                     <form onSubmit={handleSubmit(onSubmit)}

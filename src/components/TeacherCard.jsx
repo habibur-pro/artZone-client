@@ -1,12 +1,14 @@
 import { AiOutlineMail, AiOutlineWhatsApp } from 'react-icons/ai';
 import { CiFacebook } from 'react-icons/ci';
 import { FaLinkedinIn } from 'react-icons/fa';
-
-
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
 const TeacherCard = ({ teacher }) => {
     const { name, photo, students, email } = teacher || {}
     return (
-        <div className="h-[400px] border relative overflow-hidden group">
+        <div data-aos="fade-down" className="h-[400px] border relative overflow-hidden group">
             <img src={photo} className="h-full w-full" alt="" />
             <div className="w-full absolute bottom-0 left-0 bg-secondary bg-opacity-80 h-0 group-hover:h-full duration-500 ease-in-out">
                 <div className="translate-y-[220px] text-white text-center ">
@@ -25,7 +27,5 @@ const TeacherCard = ({ teacher }) => {
         </div>
     );
 };
-{/* <h3 className="text-2xl text-center">{name}</h3>
-                    <h4 className="text-xl text-center">Teacher</h4>
-                    <p className="opacity-0 group-hover:opacity-100 duration-300">Students: {students}</p> */}
+
 export default TeacherCard;

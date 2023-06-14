@@ -2,7 +2,10 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
-
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
 
 const ClassCard = ({ singleClass }) => {
     const [axiosSecure] = useAxiosSecure()
@@ -46,7 +49,7 @@ const ClassCard = ({ singleClass }) => {
     }
     return (
 
-        <div className="card border relative">
+        <div data-aos="fade-down" className="card border relative">
 
             <img src={image} className="h-[220px]" alt="" />
             <div className="p-5 py-8">

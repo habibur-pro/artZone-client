@@ -1,9 +1,14 @@
 import experienceBg from '../../assets/images/experience-bg.jpg'
 import MyContainer from '../../components/MyContainer'
 import ProgressBar from "@ramonak/react-progress-bar";
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
+
 const ExperienceBoard = () => {
     return (
-        <div className="h-[550px] bg-cover bg-center bg-no-repeat my-32" style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${experienceBg})` }}>
+        <div data-aos="fade-down" className="h-[550px]  bg-cover bg-center bg-no-repeat my-32" style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${experienceBg})` }}>
 
             <div className='flex justify-between w-full h-full'>
                 <div className='md:w-1/2 bg-secondary h-[550px] bg-opacity-90 pt-12'>

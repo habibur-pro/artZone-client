@@ -14,6 +14,7 @@
     "@ramonak/react-progress-bar": "^5.0.3",
     "@stripe/react-stripe-js": "^2.1.0",
     "@stripe/stripe-js": "^1.54.0",
+    "aos": "^2.3.4",
     "axios": "^1.4.0",
     "dom": "^0.0.3",
     "firebase": "^9.22.1",
