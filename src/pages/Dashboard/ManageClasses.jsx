@@ -10,7 +10,7 @@ const ManageClasses = () => {
     const { data: classes, refetch } = useGetTeacherClass('classes')
     console.log('all classs', classes)
 
-    const handleApprove = (id, status) => {
+    const handleApproveDeny = (id, status) => {
         axiosSecure.patch(`classes/${id}`, {
             status: status
         })
@@ -67,14 +67,14 @@ const ManageClasses = () => {
                             <td className="">
                                 <button
                                     disabled={singlClass?.status === 'approved' || singlClass?.status === 'denied'}
-                                    onClick={() => handleApprove(singlClass._id, 'approved')}
+                                    onClick={() => handleApproveDeny(singlClass._id, 'approved')}
                                     className="btn btn-secondary btn-xs">Approve
                                 </button>
                             </td>
                             <td>
                                 <button
                                     disabled={singlClass?.status === 'approved' || singlClass?.status === 'denied'}
-                                    onClick={() => handleApprove(singlClass._id, 'denied')}
+                                    onClick={() => handleApproveDeny(singlClass._id, 'denied')}
                                     className="btn btn-primary btn-xs">Deny
                                 </button>
                             </td>

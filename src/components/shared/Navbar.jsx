@@ -9,9 +9,11 @@ import profileImage from '../../assets/images/profile.jpg'
 
 
 
+
 const Navbar = () => {
     const [isOpen, setOpen] = useState(true)
-    const { user, logOut } = useAuth()
+    const { user, logOut, userRole } = useAuth()
+
 
     console.log('menu', isOpen)
     const handleLogOut = () => {
@@ -37,8 +39,9 @@ const Navbar = () => {
                 }>Classes</NavLink>
             </ li>
             {
-                // todo dashboard link dynamic 
-                user && < li > <NavLink to='/dashboard'
+
+                user && < li > <NavLink to={`${(userRole === 'student' && '/dashboard/my_selected_class') || (userRole === 'admin' && '/dashboard/manage_classes') || (userRole === 'teacher' && '/dashboard/my_classes')
+                    }`}
                     className={({ isActive }) => isActive ? "text-red-400" : ""
                     }>Dashboard </NavLink>
                 </ li>

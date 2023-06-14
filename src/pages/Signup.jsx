@@ -29,7 +29,6 @@ const Signup = () => {
 
     const imageHostKey = import.meta.env.VITE_IMAGE_UPLOAD_KEY
     const imageHostingUrl = `https://api.imgbb.com/1/upload?key=${imageHostKey}`
-    // Todo: revove expiration from imagehosting url
 
     // validata password and confirm password 
     const valiDatePass = e => {
@@ -174,7 +173,7 @@ const Signup = () => {
                                     <input
                                         onBlurCapture={valiDatePass}
                                         {...register("password", { required: true, pattern: /^(?=.*[A-Z])(?=.*[\W_]).{6,}$/ })}
-                                        type={isPassShow ? 'password' : 'text'}
+                                        type={isPassShow ? 'text' : 'password'}
                                         className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                                         placeholder="Password"
                                     />
@@ -182,9 +181,10 @@ const Signup = () => {
                                     <span className="absolute inset-y-0 end-0 grid place-content-center px-4 text-md">
                                         <span onClick={() => setPassShow(!isPassShow)}>
                                             {
-                                                isPassShow ? <AiOutlineEye />
+                                                isPassShow ? <AiOutlineEyeInvisible />
                                                     :
-                                                    <AiOutlineEyeInvisible />
+                                                    <AiOutlineEye />
+
                                             }
                                         </span>
 
@@ -206,7 +206,7 @@ const Signup = () => {
                                     <input
                                         {...register("confirmPassword", { required: true })}
                                         onKeyUp={validataConfirmPass}
-                                        type={isConfirmPassShow ? 'password' : 'text'}
+                                        type={isConfirmPassShow ? 'text' : 'password'}
                                         className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                                         placeholder="Confirm Password"
                                     />
@@ -214,9 +214,10 @@ const Signup = () => {
                                     <span className="absolute inset-y-0 end-0 grid place-content-center px-4 text-md">
                                         <span onClick={() => setConfirmPassShow(!isConfirmPassShow)}>
                                             {
-                                                isConfirmPassShow ? <AiOutlineEye />
+                                                isConfirmPassShow ? <AiOutlineEyeInvisible />
                                                     :
-                                                    <AiOutlineEyeInvisible />
+                                                    <AiOutlineEye />
+
                                             }
                                         </span>
 

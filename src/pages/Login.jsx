@@ -74,7 +74,7 @@ const Login = () => {
                         <div className="relative border rounded">
                             <input
                                 {...register("password", { required: true })}
-                                type={show ? 'password' : 'text'}
+                                type={show ? 'text' : 'password'}
                                 className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                                 placeholder="Password"
                             />
@@ -82,9 +82,10 @@ const Login = () => {
                             <span className="absolute inset-y-0 end-0 grid place-content-center px-4 text-md">
                                 <span onClick={() => setShow(!show)}>
                                     {
-                                        show ? <AiOutlineEye />
+                                        show ? <AiOutlineEyeInvisible />
                                             :
-                                            <AiOutlineEyeInvisible />
+                                            <AiOutlineEye />
+
                                     }
                                 </span>
 

@@ -3,13 +3,14 @@ import useAuth from '../../hooks/useAuth'
 import { useForm } from "react-hook-form";
 import useAxiosSecure from '../../hooks/useAxiosSecure'
 import Swal from 'sweetalert2';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { useQuery } from 'react-query';
 
 
 
 const UpdateMyClass = () => {
     const { user } = useAuth()
+    const navigate = useNavigate()
     const [axiosSecure] = useAxiosSecure()
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { id } = useParams()
@@ -53,6 +54,7 @@ const UpdateMyClass = () => {
                         timer: 1000
                     })
                     reset()
+                    navigate('/dashboard/my_classes')
                 }
             })
 

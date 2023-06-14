@@ -3,11 +3,13 @@ import useAuth from '../../hooks/useAuth'
 import { useForm } from "react-hook-form";
 import useAxiosSecure from '../../hooks/useAxiosSecure'
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router';
 
 
 
 const AddClass = () => {
     const { user } = useAuth()
+    const navigate = useNavigate()
     const [axiosSecure] = useAxiosSecure()
     const imageHostKey = import.meta.env.VITE_IMAGE_UPLOAD_KEY
     const imageHostingUrl = `https://api.imgbb.com/1/upload?key=${imageHostKey}`
@@ -45,6 +47,7 @@ const AddClass = () => {
                                 timer: 1000
                             })
                             reset()
+                            navigate('/dashboard/my_classes')
                         }
                     })
             }
@@ -54,7 +57,7 @@ const AddClass = () => {
 
     return (
         <div>
-            <h3>Add Class</h3>
+
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="mb-3">
                     {/* class name  */}
@@ -69,7 +72,7 @@ const AddClass = () => {
 
                     {/* image  */}
                 </div>
-                <div className="mb-3">
+                <div className="mb-3 border-gray-200 bg-white">
                     <input
                         className="w-full rounded-lg border-gray-200 p-3 text-sm"
                         placeholder="Name"

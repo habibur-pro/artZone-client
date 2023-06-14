@@ -96,7 +96,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'feadback/:id',
-                element: <Feadback></Feadback>
+                element: <AdminRoute><Feadback></Feadback></AdminRoute>
             }
         ]
 
