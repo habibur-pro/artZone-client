@@ -12,12 +12,12 @@ const Teachers = () => {
 
 
     return (
-        <div>
+        <div className="">
             {
                 isLoading ? <Spinner />
                     :
                     <>
-                        <PageHeader heading='Out Teachers'></PageHeader>
+                        <PageHeader heading='Teachers'></PageHeader>
                         <MyContainer>
 
 
@@ -29,7 +29,7 @@ const Teachers = () => {
                                     ></TeacherCard>)
                                 }
                             </div>
-
+                            <button className="btn btn-secondary text-center">See All</button>
                         </MyContainer>
                     </>
             }

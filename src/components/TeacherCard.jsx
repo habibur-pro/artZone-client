@@ -6,8 +6,8 @@ import { FaLinkedinIn } from 'react-icons/fa';
 const TeacherCard = ({ teacher }) => {
     const { name, photo, students, email } = teacher || {}
     return (
-        <div className="h-[400px] relative overflow-hidden group">
-            <img src={photo} className="h-full" alt="" />
+        <div className="h-[400px] border relative overflow-hidden group">
+            <img src={photo} className="h-full w-full" alt="" />
             <div className="w-full absolute bottom-0 left-0 bg-secondary bg-opacity-80 h-0 group-hover:h-full duration-500 ease-in-out">
                 <div className="translate-y-[220px] text-white text-center ">
                     <h3 className="text-3xl  font-bold">{name}</h3>

@@ -52,7 +52,7 @@ const Login = () => {
             <MyContainer>
                 <div className="flex justify-center items-center">
                     <form onSubmit={handleSubmit(onSubmit)}
-                        className="flex flex-col w-1/3 mt-20 gap-5 border p-5">
+                        className="flex flex-col w-full md:w-1/3 mt-20 gap-5 border p-5">
                         <h3 className="text-3xl font-bold">Please Login</h3>
                         <div className="relative border rounded">
                             <input

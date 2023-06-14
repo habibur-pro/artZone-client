@@ -13,7 +13,7 @@ const Classes = () => {
                 isLoading ? <Spinner></Spinner>
                     :
                     <>
-                        <PageHeader heading="Our Classess"></PageHeader>
+                        <PageHeader heading="Classess"></PageHeader>
                         <MyContainer>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 my-20">
                                 {
@@ -25,7 +25,9 @@ const Classes = () => {
                                     </ClassCard>)
                                 }
                             </div>
+
                         </MyContainer>
+
                     </>
             }
         </div>

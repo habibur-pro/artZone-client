@@ -48,17 +48,17 @@ const ClassCard = ({ singleClass }) => {
 
         <div className="card border relative">
 
-            <img src={image} alt="" />
+            <img src={image} className="h-[220px]" alt="" />
             <div className="p-5 py-8">
                 <h3 className="text-3xl font-semibold text-center">{name}</h3>
                 <p className="text-md text-center">{teacher_name}</p>
                 <div className="flex justify-between my-3 w-3/4 mx-auto">
                     <div className="text-center ">
-                        <p className="font-bold text-3xl text-warning">{enroled || 0}</p>
+                        <p className="font-bold text-3xl text-secondary">{enroled || 0}</p>
                         <p className="text-lg text-slate-500">Enroled</p>
                     </div>
                     <div className="text-center ">
-                        <p className="font-bold text-3xl text-warning">{seats}</p>
+                        <p className="font-bold text-3xl text-secondary">{seats}</p>
                         <p className="text-lg text-slate-500">Available</p>
                     </div>
                 </div>

@@ -125,7 +125,7 @@ const AddClass = () => {
                     />
                     {errors.price && <p className="text-sm text-red-500">{errors.price?.message}</p>}
                 </div>
-                <input type='submit' className="btn btn-secondary" />
+                <input type='submit' value="Add Class" className="btn btn-secondary" />
             </form>
         </div>
     );

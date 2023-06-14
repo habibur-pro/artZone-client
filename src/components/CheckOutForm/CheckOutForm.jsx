@@ -156,7 +156,7 @@ const CheckOutForm = ({ bookingData }) => {
                         },
                     }}
                 />
-                <button type="submit" disabled={!stripe}>
+                <button id='btn-pay' type="submit" disabled={!stripe}>
                     Pay
                 </button>
             </form>

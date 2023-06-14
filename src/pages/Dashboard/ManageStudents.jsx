@@ -22,7 +22,7 @@ const ManageStudents = () => {
     const handleSetRole = (userEmail, role) => {
         axiosSecure.patch(`/users/${userEmail}`, {
             role: role,
-            logged_student: user?.email
+            logged_admin: user?.email
         })
             .then(res => {
                 if (res.data.acknowledged) {
@@ -60,7 +60,7 @@ const ManageStudents = () => {
                             <td>
                                 <div className="avatar">
                                     <div className="mask mask-squircle w-12 h-12">
-                                        <img src={singleUser?.image} alt="Profile Image" />
+                                        <img src={singleUser?.photo} alt="Profile Image" />
                                     </div>
                                 </div>
                             </td>
@@ -75,7 +75,7 @@ const ManageStudents = () => {
                             </td>
                             <td>
                                 <button
-                                    disabled={singleUser?.role === 'teacher'}
+                                    disabled={singleUser?.role === 'teacher' || singleUser?.role === 'admin'}
                                     onClick={() => handleSetRole(singleUser?.email, 'teacher')}
                                     className="btn btn-secondary btn-xs">Make Teacher</button>
                             </td>
