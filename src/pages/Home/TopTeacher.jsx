@@ -4,6 +4,7 @@ import SectionTitle from "../../components/SectionTitle";
 import TeacherCard from "../../components/TeacherCard";
 import useGetTeacherClass from "../../hooks/useGetTeacherClass";
 import Spinner from "../../components/Spinner";
+import { Link } from "react-router-dom";
 
 
 
@@ -32,6 +33,9 @@ const TopTeacher = () => {
                                     teacher={teacher}
                                 ></TeacherCard>)
                             }
+                        </div>
+                        <div className="flex justify-center items-center mt-10">
+                            <Link to='/teachers'><button className="btn btn-secondary text-center">See More</button></Link>
                         </div>
                     </MyContainer>
             }

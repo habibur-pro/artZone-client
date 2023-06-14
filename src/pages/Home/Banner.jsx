@@ -5,6 +5,7 @@ import slide2 from '../../assets/images/slide-2.jpg'
 import slide3 from '../../assets/images/slide-3.jpg'
 
 import MyContainer from "../../components/MyContainer";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
     return (
@@ -23,7 +24,9 @@ const Banner = () => {
 
                             <div>
                                 <h1 className="white md:leading-[50px] text-3xl md:text-4xl font-bold md:w-3/4 mx-auto">The Most Creative Art School That Can Develop Your Talent</h1>
-                                <button className="btn btn-primary mt-5">get started </button>
+                                <Link to='/classes'>
+                                    <button className="btn btn-primary mt-5">get started </button>
+                                </Link>
                             </div>
 
                         </div>
@@ -38,7 +41,9 @@ const Banner = () => {
 
                             <div>
                                 <h1 className="white md:leading-[50px] text-3xl md:text-4xl font-bold md:w-3/4 mx-auto">The Innovative Art School for Creative Development</h1>
-                                <button className="btn btn-primary mt-5">get started </button>
+                                <Link to='/classes'>
+                                    <button className="btn btn-primary mt-5">get started </button>
+                                </Link>
                             </div>
 
                         </div>
@@ -52,7 +57,9 @@ const Banner = () => {
 
                             <div>
                                 <h1 className="white text-3xl md:text-4xl font-bold md:w-3/4 mx-auto md:leading-[50px]">The Trailblazing Art School for Limitless Creative Development</h1>
-                                <button className="btn btn-primary mt-5">get started </button>
+                                <Link to='/classes'>
+                                    <button className="btn btn-primary mt-5">get started </button>
+                                </Link>
                             </div>
 
                         </div>

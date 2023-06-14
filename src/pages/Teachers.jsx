@@ -29,10 +29,11 @@ const Teachers = () => {
                                     ></TeacherCard>)
                                 }
                             </div>
-                            <button className="btn btn-secondary text-center">See All</button>
+
                         </MyContainer>
                     </>
             }
+
         </div>
     );
 };

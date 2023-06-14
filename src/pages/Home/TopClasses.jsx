@@ -4,6 +4,7 @@ import MyContainer from "../../components/MyContainer";
 import ClassCard from "../../components/ClassCard";
 import useGetTeacherClass from "../../hooks/useGetTeacherClass";
 import Spinner from "../../components/Spinner";
+import { Link } from "react-router-dom";
 
 
 
@@ -26,7 +27,11 @@ const TopClasses = () => {
                                 ></ClassCard>)
                             }
                         </div>
+                        <div className="flex justify-center items-center mt-7">
+                            <Link to='/classes'><button className="btn btn-secondary text-center">See More</button></Link>
+                        </div>
                     </MyContainer>
+
             }
 
         </div>
