@@ -56,7 +56,7 @@ const Navbar = () => {
             <div className='py-3 border-b bg-transparent fixed  top-0 w-full  z-50 bg-white'>
                 <MyContainer>
                     <div className='flex justify-between items-center '>
-                        <h3 className='text-3xl font-bold'>Art<span className='text-primary'>Zone</span></h3>
+                        <h3 className='text-3xl font-bold text-secondary'>Art<span className='text-primary'>Zone</span></h3>
                         <ul className='hidden md:flex gap-5'>
 
                             {navLinks}

@@ -53,7 +53,7 @@ const Login = () => {
                 <div className="flex justify-center items-center">
                     <form onSubmit={handleSubmit(onSubmit)}
                         className="flex flex-col w-full md:w-1/3 mt-20 gap-5 border p-5">
-                        <h3 className="text-3xl font-bold">Please Login</h3>
+                        <h3 className="text-3xl font-bold text-secondary">Please Login</h3>
                         <div className="relative border rounded">
                             <input
                                 {...register("email", { required: true })}
@@ -99,7 +99,7 @@ const Login = () => {
                         {
                             loginError && <p className="text-red-500">{loginError}</p>
                         }
-                        <button disabled={loginLoading} type="submit" className="btn btn-neutral">
+                        <button disabled={loginLoading} type="submit" className="btn btn-secondary">
                             {loginLoading ? <span className="animate-spin text-lg"><ImSpinner10 /></span> : 'Login'}
                         </button>
                         <div className="divider">Or</div>

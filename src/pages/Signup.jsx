@@ -119,7 +119,7 @@ const Signup = () => {
                 <div className="">
                     <form onSubmit={handleSubmit(onSubmit)}
                         className="flex flex-col w-auto gap-5 border p-5">
-                        <h3 className="text-3xl font-bold text-center mb-5">Register Your Account</h3>
+                        <h3 className="text-3xl font-bold text-center mb-5 text-secondary">Register Your Account</h3>
 
                         {/* name and email  */}
                         <div className="md:grid grid-cols-2 gap-5">
@@ -286,7 +286,7 @@ const Signup = () => {
                             registerError && <p className="text-sm text-red-500">{registerError}</p>
                         }
 
-                        <button disabled={registerLoading} type="submit" className="btn btn-neutral">
+                        <button disabled={registerLoading} type="submit" className="btn btn-secondary">
                             {registerLoading ? (<span className="animate-spin text-lg"><ImSpinner10 /></span>) : 'Signup'}
                         </button>
                         <div className="divider">Or</div>
