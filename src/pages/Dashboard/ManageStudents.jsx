@@ -5,7 +5,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 
 const ManageStudents = () => {
-    const { user } = useAuth()
+    const { user, userRole } = useAuth()
     const [axiosSecure] = useAxiosSecure()
 
 
@@ -75,7 +75,7 @@ const ManageStudents = () => {
                             </td>
                             <td>
                                 <button
-                                    disabled={singleUser?.role === 'teacher' || singleUser?.role === 'admin'}
+                                    disabled={singleUser?.email === user?.email || singleUser?.role === 'teacher'}
                                     onClick={() => handleSetRole(singleUser?.email, 'teacher')}
                                     className="btn btn-secondary btn-xs">Make Teacher</button>
                             </td>
