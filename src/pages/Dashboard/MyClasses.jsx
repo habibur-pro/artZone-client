@@ -23,7 +23,7 @@ const MyClasses = () => {
         queryFn: async () => {
             const res = await axiosSecure.get(`/classes/${user?.email}`)
             const data = res.data;
-            console.log('myclasses data', classes)
+
             return data
         }
     })

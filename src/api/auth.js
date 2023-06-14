@@ -4,7 +4,7 @@ const baseUrl = import.meta.env.VITE_BASE_URL;
 
 // save user to db
 export const saveUser = async (user) => {
-    console.log('user from saved user', user)
+
     const res = await axios.put(`${baseUrl}/students`, {
         name: user?.displayName,
         email: user?.email,

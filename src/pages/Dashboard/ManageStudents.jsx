@@ -14,7 +14,7 @@ const ManageStudents = () => {
         queryFn: async () => {
             const res = await axiosSecure.get(`/users`)
             const data = res.data;
-            console.log('all users', data)
+
             return data
         }
     })

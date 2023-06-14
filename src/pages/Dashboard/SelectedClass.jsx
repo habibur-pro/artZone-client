@@ -51,7 +51,7 @@ const SelectedClass = () => {
     }
 
 
-    console.log('user from selected clss', user)
+
     return (
         <>
             {dataLoading ? <Spinner></Spinner> :

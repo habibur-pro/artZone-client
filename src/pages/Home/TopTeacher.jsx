@@ -11,13 +11,7 @@ import { Link } from "react-router-dom";
 const TopTeacher = () => {
     const { data: teachers, isLoading } = useGetTeacherClass('teachers', 6)
 
-    // const [teachers, setTeachers] = useState([])
-    // useEffect(() => {
-    //     axios.get(`${import.meta.env.VITE_BASE_URL}/teachers?limit=6`)
-    //         .then(res => setTeachers(res.data))
 
-    // }, [])
-    // console.log("teachers", teachers)
     return (
         <div className="mb-20">
             {

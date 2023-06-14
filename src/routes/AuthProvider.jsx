@@ -24,7 +24,7 @@ const AuthProvider = ({ children }) => {
         if (user?.email) {
             getRole(user?.email)
                 .then(role => {
-                    console.log('user role from authprovider', role)
+
                     setUserRole(role)
                 })
         }
@@ -61,7 +61,7 @@ const AuthProvider = ({ children }) => {
     // updata profile 
     const updateUserProfile = (userName, userImage) => {
         // setLoading(true)
-        console.log('update info', userName, userImage)
+
         return updateProfile(auth.currentUser, {
             displayName: userName,
             photoURL: userImage
@@ -90,10 +90,10 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser)
             if (currentUser?.email) {
-                console.log('cureent user from auth provider', currentUser.email)
+
                 createToken(currentUser)
             }
-            console.log('current user', currentUser)
+
             localStorage.removeItem('access-token')
             setLoading(false)
         })

@@ -13,7 +13,7 @@ const CheckOutForm = ({ bookingData }) => {
     const [clientSecret, setClientSecret] = useState('')
     const [axiosSecure] = useAxiosSecure()
     const [paymentError, setPaymentError] = useState('')
-    console.log('after minus', bookingData.seats - 1)
+
 
     useEffect(() => {
 
@@ -22,7 +22,7 @@ const CheckOutForm = ({ bookingData }) => {
                 price: bookingData?.price
             })
                 .then(res => {
-                    console.log(res.data)
+
                     setClientSecret(res.data?.client_secret)
                 })
         }
@@ -55,7 +55,7 @@ const CheckOutForm = ({ bookingData }) => {
         });
 
         if (error) {
-            console.log('[error]', error);
+
             setPaymentError(error.message)
         } else {
             console.log('[PaymentMethod]', paymentMethod);
@@ -76,7 +76,7 @@ const CheckOutForm = ({ bookingData }) => {
             },
         );
         if (confirmError) {
-            console.log('[confirmError]', confirmError);
+
             setPaymentError(confirmError.message)
         } else {
             console.log('[paymentIntent]', paymentIntent);

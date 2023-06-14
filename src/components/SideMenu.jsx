@@ -21,7 +21,7 @@ const SideMenu = () => {
     const handleLogOut = () => {
         logOut()
             .then(() => {
-                console.log(logOut)
+
             })
             .catch(error => console.log(error))
     }

@@ -15,7 +15,7 @@ const Navbar = () => {
     const { user, logOut, userRole } = useAuth()
 
 
-    console.log('menu', isOpen)
+
     const handleLogOut = () => {
         logOut()
             .then(() => {

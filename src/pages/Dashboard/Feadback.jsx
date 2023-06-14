@@ -11,7 +11,7 @@ const Feadback = () => {
     const handleFeadback = (event) => {
         event.preventDefault()
         const feadback = event.target?.feadback?.value;
-        console.log('feadback', feadback)
+
 
         axiosSecure.patch(`/feadback/classes/${id}`, {
             feadback: feadback

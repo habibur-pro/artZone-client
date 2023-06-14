@@ -8,14 +8,14 @@ import useGetTeacherClass from "../../hooks/useGetTeacherClass";
 const ManageClasses = () => {
     const [axiosSecure] = useAxiosSecure()
     const { data: classes, refetch } = useGetTeacherClass('classes')
-    console.log('all classs', classes)
+
 
     const handleApproveDeny = (id, status) => {
         axiosSecure.patch(`classes/${id}`, {
             status: status
         })
             .then(res => {
-                console.log('status updated', res.data)
+
                 if (res.data.acknowledged) {
                     refetch()
 

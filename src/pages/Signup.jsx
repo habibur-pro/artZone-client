@@ -74,10 +74,10 @@ const Signup = () => {
                             if (user?.email) {
                                 updateUserProfile(name, imageUrl)
                                     .then(() => {
-                                        console.log('signUp user', user)
+
                                         saveUser(user)
-                                            .then(data => {
-                                                console.log('from signup', data)
+                                            .then(() => {
+
                                             })
 
                                         setRegisterLoading(false)

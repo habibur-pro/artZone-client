@@ -11,7 +11,7 @@ const Dashboard = () => {
     const { user, userRole } = useAuth()
 
     const [open, setOpen] = useState(false)
-    console.log('dashboard user', user)
+
     return (
         <>
             {/* left side  */}

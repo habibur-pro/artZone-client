@@ -14,14 +14,14 @@ const UpdateMyClass = () => {
     const [axiosSecure] = useAxiosSecure()
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { id } = useParams()
-    console.log('id', id)
+
 
     const { data: singleClass = [] } = useQuery({
         queryKey: ['class', id],
         queryFn: async () => {
             const res = await axiosSecure.get(`/myClasses/${id}`)
             const data = res.data;
-            console.log('update', data)
+
             return data
         }
     })
@@ -31,7 +31,7 @@ const UpdateMyClass = () => {
 
 
     const onSubmit = data => {
-        console.log("for Upadte", data)
+
 
         axiosSecure.put(`/classes/${id}`, {
             name: data.name,

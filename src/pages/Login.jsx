@@ -23,13 +23,13 @@ const Login = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
-        console.log(data.email, data.password)
+
         setLoginLoading(true)
         logInWithEmailPassword(data?.email, data?.password)
 
-            .then(loggedUser => {
+            .then(() => {
                 setLoginLoading(false)
-                console.log(loggedUser.user)
+
                 Swal.fire({
                     position: 'center',
                     icon: 'success',

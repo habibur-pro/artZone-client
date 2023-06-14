@@ -11,7 +11,7 @@ const EnroledClass = () => {
         queryKey: ['enroledClasses', user?.email],
         queryFn: async () => {
             const res = await axiosSecure.get(`/enroledClasses/${user?.email}`)
-            console.log('enroled data', res.data)
+
             return res.data
         }
     })

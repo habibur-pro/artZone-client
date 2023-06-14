@@ -25,7 +25,7 @@ const AddClass = () => {
         })
             .then(res => res.json())
             .then(image => {
-                console.log('image', image.data)
+
 
                 axiosSecure.post('/add_class', {
                     name: data.name,

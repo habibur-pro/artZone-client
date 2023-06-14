@@ -12,7 +12,7 @@ const ClassCard = ({ singleClass }) => {
     const { user, userRole } = useAuth()
     const navigate = useNavigate()
     const { image, name, price, seats, teacher_name, enroled } = singleClass || {}
-    console.log('role from select card', userRole)
+
     const handleSelectClass = singleClass => {
         const { image, name, price, teacher_email, _id, seats, enroled } = singleClass || {}
         const selectItem = {
@@ -27,7 +27,7 @@ const ClassCard = ({ singleClass }) => {
             enroled,
             status: "unpaid",
         }
-        console.log(selectItem)
+
 
 
         axiosSecure.post('/select_classes', {
