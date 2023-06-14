@@ -15,6 +15,7 @@ const Footer = () => {
                     <div>
                         <h2 className="text-5xl font-bold">Art<span className="text-primary">Zone</span></h2>
                         <p>ArtZone Academy Ltd.<br />Providing Best Leaning Since 2010</p>
+                        <p>Dhaka-1200 Bangladesh</p>
                         <div className='flex items-center justify-center gap-3 mt-3'>
                             <span className=' p-1 bg-primary text-white text-lg hover:scale-110'><AiOutlineMail /></span>
                             <span className=' p-1 bg-primary text-white text-lg hover:scale-110'><FaLinkedinIn /></span>

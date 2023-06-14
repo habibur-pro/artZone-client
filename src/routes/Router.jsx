@@ -20,12 +20,14 @@ import UpdateMyClass from "../pages/Dashboard/UpdateMyClass";
 import Feadback from "../pages/Dashboard/Feadback";
 import Payment from "../pages/Dashboard/Payment";
 import PaymentHistory from "../pages/Dashboard/PaymentHistory";
+import ErrorPage from "../pages/ErrorPage";
 
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: '/',
@@ -52,6 +54,7 @@ const router = createBrowserRouter([
     {
         path: 'dashboard',
         element: <PrivetRoute><Dashboard></Dashboard></PrivetRoute>,
+        errorElement: <ErrorPage />,
         children: [
             // student routes 
             {

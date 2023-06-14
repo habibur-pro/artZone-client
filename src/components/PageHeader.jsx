@@ -1,3 +1,4 @@
+import { Fade } from 'react-awesome-reveal';
 import headerImage from '../assets/images/slideImage.jpg'
 import MyContainer from './MyContainer';
 
@@ -8,7 +9,10 @@ const PageHeader = ({ heading }) => {
                 <MyContainer>
                     {/* <div className='flex justify-center items-center'> */}
                     <div>
-                        <h2 className='text-white text-4xl font-bold text-center'>{heading}</h2>
+                        <Fade cascade damping={0.1} className="text-white text-4xl font-bold text-center">
+                            {heading}
+                        </Fade>
+
                     </div>
                     {/* </div> */}
                 </MyContainer>
